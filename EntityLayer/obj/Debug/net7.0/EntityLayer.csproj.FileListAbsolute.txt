@@ -1,0 +1,12 @@
+/Users/safakca/Projects/DynamicWebProject/EntityLayer/bin/Debug/net7.0/EntityLayer.deps.json
+/Users/safakca/Projects/DynamicWebProject/EntityLayer/bin/Debug/net7.0/EntityLayer.dll
+/Users/safakca/Projects/DynamicWebProject/EntityLayer/bin/Debug/net7.0/EntityLayer.pdb
+/Users/safakca/Projects/DynamicWebProject/EntityLayer/obj/Debug/net7.0/EntityLayer.csproj.AssemblyReference.cache
+/Users/safakca/Projects/DynamicWebProject/EntityLayer/obj/Debug/net7.0/EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+/Users/safakca/Projects/DynamicWebProject/EntityLayer/obj/Debug/net7.0/EntityLayer.AssemblyInfoInputs.cache
+/Users/safakca/Projects/DynamicWebProject/EntityLayer/obj/Debug/net7.0/EntityLayer.AssemblyInfo.cs
+/Users/safakca/Projects/DynamicWebProject/EntityLayer/obj/Debug/net7.0/EntityLayer.csproj.CoreCompileInputs.cache
+/Users/safakca/Projects/DynamicWebProject/EntityLayer/obj/Debug/net7.0/EntityLayer.dll
+/Users/safakca/Projects/DynamicWebProject/EntityLayer/obj/Debug/net7.0/refint/EntityLayer.dll
+/Users/safakca/Projects/DynamicWebProject/EntityLayer/obj/Debug/net7.0/EntityLayer.pdb
+/Users/safakca/Projects/DynamicWebProject/EntityLayer/obj/Debug/net7.0/ref/EntityLayer.dll

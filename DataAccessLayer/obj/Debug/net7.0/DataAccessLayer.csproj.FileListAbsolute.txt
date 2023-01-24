@@ -1,0 +1,17 @@
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/bin/Debug/net7.0/DataAccessLayer.deps.json
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/bin/Debug/net7.0/DataAccessLayer.runtimeconfig.json
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/bin/Debug/net7.0/DataAccessLayer.dll
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/bin/Debug/net7.0/DataAccessLayer.pdb
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/bin/Debug/net7.0/EntityLayer.dll
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/bin/Debug/net7.0/EntityLayer.pdb
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/obj/Debug/net7.0/DataAccessLayer.csproj.AssemblyReference.cache
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/obj/Debug/net7.0/DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/obj/Debug/net7.0/DataAccessLayer.AssemblyInfoInputs.cache
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/obj/Debug/net7.0/DataAccessLayer.AssemblyInfo.cs
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/obj/Debug/net7.0/DataAccessLayer.csproj.CoreCompileInputs.cache
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/obj/Debug/net7.0/DataAccessLayer.csproj.CopyComplete
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/obj/Debug/net7.0/DataAccessLayer.dll
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/obj/Debug/net7.0/refint/DataAccessLayer.dll
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/obj/Debug/net7.0/DataAccessLayer.pdb
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/obj/Debug/net7.0/DataAccessLayer.genruntimeconfig.cache
+/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/obj/Debug/net7.0/ref/DataAccessLayer.dll
