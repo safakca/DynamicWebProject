@@ -1,33 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/DataAccessLayer.csproj": {}
+    "C:\\Projects\\DynamicWebProject\\DataAccessLayer\\DataAccessLayer.csproj": {}
   },
   "projects": {
-    "/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/DataAccessLayer.csproj": {
+    "C:\\Projects\\DynamicWebProject\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/DataAccessLayer.csproj",
+        "projectUniqueName": "C:\\Projects\\DynamicWebProject\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/DataAccessLayer.csproj",
-        "packagesPath": "/Users/safakca/.nuget/packages/",
-        "outputPath": "/Users/safakca/Projects/DynamicWebProject/DataAccessLayer/obj/",
+        "projectPath": "C:\\Projects\\DynamicWebProject\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\safak\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\DynamicWebProject\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/safakca/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\safak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Projects\\FERP\\EInvoice.EG.Nuget\\EInvoice.EG.Nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/safakca/Projects/DynamicWebProject/EntityLayer/EntityLayer.csproj": {
-                "projectPath": "/Users/safakca/Projects/DynamicWebProject/EntityLayer/EntityLayer.csproj"
+              "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj": {
+                "projectPath": "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj"
               }
             }
           }
@@ -81,26 +83,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200-preview.22628.1/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/safakca/Projects/DynamicWebProject/EntityLayer/EntityLayer.csproj": {
+    "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/safakca/Projects/DynamicWebProject/EntityLayer/EntityLayer.csproj",
+        "projectUniqueName": "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj",
         "projectName": "EntityLayer",
-        "projectPath": "/Users/safakca/Projects/DynamicWebProject/EntityLayer/EntityLayer.csproj",
-        "packagesPath": "/Users/safakca/.nuget/packages/",
-        "outputPath": "/Users/safakca/Projects/DynamicWebProject/EntityLayer/obj/",
+        "projectPath": "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj",
+        "packagesPath": "C:\\Users\\safak\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\DynamicWebProject\\EntityLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/safakca/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\safak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Projects\\FERP\\EInvoice.EG.Nuget\\EInvoice.EG.Nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -148,7 +152,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200-preview.22628.1/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

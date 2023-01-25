@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FYZwEMaTg0HZVUkstFTFkItewvSTcfx5Ehmp8gYRaGrML1+ZSgof0JHwjHHDmTFgVb8qt1ZqkRr8VHTeoHQMww==",
+  "dgSpecHash": "bW7U8gseNr+b2uw32uXwZBdXOY4REYCXdfO3q5juj1wjkzrpiNBS2e97GTSOlkXyYXFfwuhG7/8NEiHixrQ7RA==",
   "success": true,
-  "projectFilePath": "/Users/safakca/Projects/DynamicWebProject/DtoLayer/DtoLayer.csproj",
+  "projectFilePath": "C:\\Projects\\DynamicWebProject\\DtoLayer\\DtoLayer.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
