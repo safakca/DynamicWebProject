@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\DynamicWebProject\\DtoLayer\\DtoLayer.csproj": {}
+    "C:\\Projects\\SA.DynamicWebProject\\DtoLayer\\DtoLayer.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\DynamicWebProject\\DtoLayer\\DtoLayer.csproj": {
+    "C:\\Projects\\SA.DynamicWebProject\\DtoLayer\\DtoLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\DynamicWebProject\\DtoLayer\\DtoLayer.csproj",
+        "projectUniqueName": "C:\\Projects\\SA.DynamicWebProject\\DtoLayer\\DtoLayer.csproj",
         "projectName": "DtoLayer",
-        "projectPath": "C:\\Projects\\DynamicWebProject\\DtoLayer\\DtoLayer.csproj",
+        "projectPath": "C:\\Projects\\SA.DynamicWebProject\\DtoLayer\\DtoLayer.csproj",
         "packagesPath": "C:\\Users\\safak\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\DynamicWebProject\\DtoLayer\\obj\\",
+        "outputPath": "C:\\Projects\\SA.DynamicWebProject\\DtoLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\safak\\AppData\\Roaming\\NuGet\\NuGet.Config",

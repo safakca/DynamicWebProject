@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\DynamicWebProject\\BusinessLayer\\BusinessLayer.csproj": {}
+    "C:\\Projects\\SA.DynamicWebProject\\BusinessLayer\\BusinessLayer.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\DynamicWebProject\\BusinessLayer\\BusinessLayer.csproj": {
+    "C:\\Projects\\SA.DynamicWebProject\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\DynamicWebProject\\BusinessLayer\\BusinessLayer.csproj",
+        "projectUniqueName": "C:\\Projects\\SA.DynamicWebProject\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "C:\\Projects\\DynamicWebProject\\BusinessLayer\\BusinessLayer.csproj",
+        "projectPath": "C:\\Projects\\SA.DynamicWebProject\\BusinessLayer\\BusinessLayer.csproj",
         "packagesPath": "C:\\Users\\safak\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\DynamicWebProject\\BusinessLayer\\obj\\",
+        "outputPath": "C:\\Projects\\SA.DynamicWebProject\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\safak\\AppData\\Roaming\\NuGet\\NuGet.Config",

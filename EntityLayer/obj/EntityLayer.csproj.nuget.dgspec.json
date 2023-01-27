@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj": {}
+    "C:\\Projects\\SA.DynamicWebProject\\EntityLayer\\EntityLayer.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj": {
+    "C:\\Projects\\SA.DynamicWebProject\\EntityLayer\\EntityLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj",
+        "projectUniqueName": "C:\\Projects\\SA.DynamicWebProject\\EntityLayer\\EntityLayer.csproj",
         "projectName": "EntityLayer",
-        "projectPath": "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj",
+        "projectPath": "C:\\Projects\\SA.DynamicWebProject\\EntityLayer\\EntityLayer.csproj",
         "packagesPath": "C:\\Users\\safak\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\DynamicWebProject\\EntityLayer\\obj\\",
+        "outputPath": "C:\\Projects\\SA.DynamicWebProject\\EntityLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\safak\\AppData\\Roaming\\NuGet\\NuGet.Config",

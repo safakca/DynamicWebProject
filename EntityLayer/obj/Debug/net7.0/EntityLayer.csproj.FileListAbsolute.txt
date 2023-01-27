@@ -22,3 +22,15 @@ C:\Projects\DynamicWebProject\EntityLayer\obj\Debug\net7.0\EntityLayer.dll
 C:\Projects\DynamicWebProject\EntityLayer\obj\Debug\net7.0\refint\EntityLayer.dll
 C:\Projects\DynamicWebProject\EntityLayer\obj\Debug\net7.0\EntityLayer.pdb
 C:\Projects\DynamicWebProject\EntityLayer\obj\Debug\net7.0\ref\EntityLayer.dll
+C:\Projects\SA.DynamicWebProject\EntityLayer\bin\Debug\net7.0\EntityLayer.deps.json
+C:\Projects\SA.DynamicWebProject\EntityLayer\bin\Debug\net7.0\EntityLayer.dll
+C:\Projects\SA.DynamicWebProject\EntityLayer\bin\Debug\net7.0\EntityLayer.pdb
+C:\Projects\SA.DynamicWebProject\EntityLayer\obj\Debug\net7.0\EntityLayer.csproj.AssemblyReference.cache
+C:\Projects\SA.DynamicWebProject\EntityLayer\obj\Debug\net7.0\EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\SA.DynamicWebProject\EntityLayer\obj\Debug\net7.0\EntityLayer.AssemblyInfoInputs.cache
+C:\Projects\SA.DynamicWebProject\EntityLayer\obj\Debug\net7.0\EntityLayer.AssemblyInfo.cs
+C:\Projects\SA.DynamicWebProject\EntityLayer\obj\Debug\net7.0\EntityLayer.csproj.CoreCompileInputs.cache
+C:\Projects\SA.DynamicWebProject\EntityLayer\obj\Debug\net7.0\EntityLayer.dll
+C:\Projects\SA.DynamicWebProject\EntityLayer\obj\Debug\net7.0\refint\EntityLayer.dll
+C:\Projects\SA.DynamicWebProject\EntityLayer\obj\Debug\net7.0\EntityLayer.pdb
+C:\Projects\SA.DynamicWebProject\EntityLayer\obj\Debug\net7.0\ref\EntityLayer.dll

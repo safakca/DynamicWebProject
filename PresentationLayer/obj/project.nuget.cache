@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MnbTzRmrk3L57IqJZDz7ChEsWjOZHrOAmGAD8wTcYjHCiCfUSOIjXPllHkNTbAJ8clr2LQqJI6qAc5AH6FDy8A==",
+  "dgSpecHash": "/bmHszOye7ASp8VYhBFvtPrmYXtTKQQ6pHi9t3BqfS8/0Yz1NbCNsbNttaVmScP70jiE3Mr+ZATVgGeH242hbQ==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\DynamicWebProject\\PresentationLayer\\PresentationLayer.csproj",
+  "projectFilePath": "C:\\Projects\\SA.DynamicWebProject\\PresentationLayer\\PresentationLayer.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

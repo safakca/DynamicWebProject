@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5Z1pXGMExHNzmhtekYcR8LbGv3ba5W6xxt6pDXs6vr3XwdqNb+8GO3vDCbaIKZi9EPUe3AdXeJj2PowG71kNkA==",
+  "dgSpecHash": "DG4uJeS0qyKufm+nF5olsp8editBiWbA3MXDbSkqQrpeHud1u/MosBN4QAOii90l+4A59v2Pfu0eZ7jC+VCazg==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj",
+  "projectFilePath": "C:\\Projects\\SA.DynamicWebProject\\EntityLayer\\EntityLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\safak\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\safak\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

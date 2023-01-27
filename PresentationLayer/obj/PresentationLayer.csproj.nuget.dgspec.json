@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\DynamicWebProject\\PresentationLayer\\PresentationLayer.csproj": {}
+    "C:\\Projects\\SA.DynamicWebProject\\PresentationLayer\\PresentationLayer.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\DynamicWebProject\\PresentationLayer\\PresentationLayer.csproj": {
+    "C:\\Projects\\SA.DynamicWebProject\\PresentationLayer\\PresentationLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\DynamicWebProject\\PresentationLayer\\PresentationLayer.csproj",
+        "projectUniqueName": "C:\\Projects\\SA.DynamicWebProject\\PresentationLayer\\PresentationLayer.csproj",
         "projectName": "PresentationLayer",
-        "projectPath": "C:\\Projects\\DynamicWebProject\\PresentationLayer\\PresentationLayer.csproj",
+        "projectPath": "C:\\Projects\\SA.DynamicWebProject\\PresentationLayer\\PresentationLayer.csproj",
         "packagesPath": "C:\\Users\\safak\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\DynamicWebProject\\PresentationLayer\\obj\\",
+        "outputPath": "C:\\Projects\\SA.DynamicWebProject\\PresentationLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\safak\\AppData\\Roaming\\NuGet\\NuGet.Config",

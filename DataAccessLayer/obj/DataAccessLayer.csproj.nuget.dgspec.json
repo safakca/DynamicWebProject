@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\DynamicWebProject\\DataAccessLayer\\DataAccessLayer.csproj": {}
+    "C:\\Projects\\SA.DynamicWebProject\\DataAccessLayer\\DataAccessLayer.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\DynamicWebProject\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "C:\\Projects\\SA.DynamicWebProject\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\DynamicWebProject\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "C:\\Projects\\SA.DynamicWebProject\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "C:\\Projects\\DynamicWebProject\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectPath": "C:\\Projects\\SA.DynamicWebProject\\DataAccessLayer\\DataAccessLayer.csproj",
         "packagesPath": "C:\\Users\\safak\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\DynamicWebProject\\DataAccessLayer\\obj\\",
+        "outputPath": "C:\\Projects\\SA.DynamicWebProject\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\safak\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj": {
-                "projectPath": "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj"
+              "C:\\Projects\\SA.DynamicWebProject\\EntityLayer\\EntityLayer.csproj": {
+                "projectPath": "C:\\Projects\\SA.DynamicWebProject\\EntityLayer\\EntityLayer.csproj"
               }
             }
           }
@@ -57,6 +57,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.2, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Microsoft.Extensions.Identity.Core": {
               "target": "Package",
@@ -87,14 +95,14 @@
         }
       }
     },
-    "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj": {
+    "C:\\Projects\\SA.DynamicWebProject\\EntityLayer\\EntityLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj",
+        "projectUniqueName": "C:\\Projects\\SA.DynamicWebProject\\EntityLayer\\EntityLayer.csproj",
         "projectName": "EntityLayer",
-        "projectPath": "C:\\Projects\\DynamicWebProject\\EntityLayer\\EntityLayer.csproj",
+        "projectPath": "C:\\Projects\\SA.DynamicWebProject\\EntityLayer\\EntityLayer.csproj",
         "packagesPath": "C:\\Users\\safak\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\DynamicWebProject\\EntityLayer\\obj\\",
+        "outputPath": "C:\\Projects\\SA.DynamicWebProject\\EntityLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\safak\\AppData\\Roaming\\NuGet\\NuGet.Config",
