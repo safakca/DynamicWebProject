@@ -1,5 +1,5 @@
 ﻿using System;
-namespace EntityLayer.Abstract;
+namespace EntityLayer.Common;
 
 public abstract class BaseEntity
 {

@@ -1,5 +1,5 @@
 ﻿using System;
-using EntityLayer.Abstract;
+using EntityLayer.Common;
 
 namespace EntityLayer.Concrete;
 

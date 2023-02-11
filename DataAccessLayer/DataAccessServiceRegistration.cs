@@ -1,7 +1,5 @@
-﻿using System;
-using DataAccessLayer.Concrete;
-using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Authentication;
+﻿using DataAccessLayer.Concrete;
+using EntityLayer.Concrete; 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

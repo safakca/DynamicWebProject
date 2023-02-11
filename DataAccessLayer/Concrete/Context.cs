@@ -1,9 +1,7 @@
-﻿using System;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using EntityLayer.Concrete;
-using DataAccessLayer.Configurations;
-using Microsoft.Extensions.Configuration;
+using DataAccessLayer.Configurations; 
 
 namespace DataAccessLayer.Concrete;
 
