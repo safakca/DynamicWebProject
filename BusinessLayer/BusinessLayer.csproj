@@ -7,12 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Repository\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
+    <ProjectReference Include="..\DtoLayer\DtoLayer.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Features\" />
+    <None Remove="Features\CQRS\" />
+    <None Remove="Features\CQRS\Commands\" />
+    <None Remove="Features\CQRS\Commands\Products\" />
+    <None Remove="Features\CQRS\Handlers\" />
+    <None Remove="Features\CQRS\Handlers\Products\" />
+    <None Remove="Features\CQRS\Queries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\" />
+    <Folder Include="Features\CQRS\" />
+    <Folder Include="Features\CQRS\Commands\" />
+    <Folder Include="Features\CQRS\Commands\Products\" />
+    <Folder Include="Features\CQRS\Handlers\" />
+    <Folder Include="Features\CQRS\Handlers\Products\" />
+    <Folder Include="Features\CQRS\Queries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
   </ItemGroup>
 </Project>

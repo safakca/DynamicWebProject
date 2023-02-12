@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Repositories;
+using DataAccessLayer.Concrete;
+using DataAccessLayer.Repositories;
 using EntityLayer.Concrete; 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +18,7 @@ public static class DataAccessServiceRegistration
 		});
         services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 
+		services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
     }
 }
 

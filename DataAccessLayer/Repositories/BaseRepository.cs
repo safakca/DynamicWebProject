@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repositories;
 
-public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
+public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
 {
     private readonly Context _context;
 
-    public Repository(Context context) => _context = context; 
+    public BaseRepository(Context context) => _context = context; 
 
     public async Task CreateAsync(TEntity entity)
     {
