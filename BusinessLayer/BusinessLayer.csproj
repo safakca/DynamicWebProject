@@ -18,6 +18,7 @@
     <None Remove="Features\CQRS\Handlers\" />
     <None Remove="Features\CQRS\Handlers\Products\" />
     <None Remove="Features\CQRS\Queries\" />
+    <None Remove="Mappings\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\" />
@@ -27,6 +28,7 @@
     <Folder Include="Features\CQRS\Handlers\" />
     <Folder Include="Features\CQRS\Handlers\Products\" />
     <Folder Include="Features\CQRS\Queries\" />
+    <Folder Include="Mappings\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
