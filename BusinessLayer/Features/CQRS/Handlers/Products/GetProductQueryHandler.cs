@@ -5,7 +5,7 @@ using DtoLayer.Concrete;
 using EntityLayer.Concrete;
 using MediatR;
 
-namespace BusinessLayer.Features.CQRS.Queries;
+namespace BusinessLayer.Features.CQRS.Queries.Products;
 
 public class GetProductsQueryHandler : IRequestHandler<GetProductQueryRequest, List<ProductDto>>
 {

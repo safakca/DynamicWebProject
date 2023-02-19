@@ -1,6 +1,6 @@
 ﻿using System;
 using AutoMapper;
-using BusinessLayer.Features.CQRS.Queries;
+using BusinessLayer.Features.CQRS.Queries.Products;
 using BusinessLayer.Repositories;
 using DtoLayer.Concrete;
 using EntityLayer.Concrete;

@@ -1,7 +1,7 @@
 ﻿using System;
-namespace DtoLayer.Concrete;
+namespace PresentationLayer.Models;
 
-public class ProductDto
+public class ProductListModel
 {
     public int Id { get; set; }
     public string? Name { get; set; }
