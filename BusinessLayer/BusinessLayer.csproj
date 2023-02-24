@@ -22,13 +22,8 @@
     <None Remove="Features\CQRS\Queries\Products\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\" />
-    <Folder Include="Features\CQRS\" />
-    <Folder Include="Features\CQRS\Commands\" />
     <Folder Include="Features\CQRS\Commands\Products\" />
-    <Folder Include="Features\CQRS\Handlers\" />
     <Folder Include="Features\CQRS\Handlers\Products\" />
-    <Folder Include="Features\CQRS\Queries\" />
     <Folder Include="Mappings\" />
     <Folder Include="Features\CQRS\Queries\Products\" />
   </ItemGroup>

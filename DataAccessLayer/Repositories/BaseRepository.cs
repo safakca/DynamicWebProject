@@ -1,8 +1,8 @@
-﻿using System.Linq.Expressions;
-using BusinessLayer.Repositories;
-using EntityLayer.Common;
+﻿using BusinessLayer.Repositories;
 using DataAccessLayer.Concrete;
+using EntityLayer.Common;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace DataAccessLayer.Repositories;
 
@@ -10,7 +10,7 @@ public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : Base
 {
     private readonly Context _context;
 
-    public BaseRepository(Context context) => _context = context; 
+    public BaseRepository(Context context) => _context = context;
 
     public async Task CreateAsync(TEntity entity)
     {

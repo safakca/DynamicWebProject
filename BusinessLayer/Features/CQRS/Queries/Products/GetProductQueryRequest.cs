@@ -1,5 +1,4 @@
-﻿using System;
-using DtoLayer.Concrete;
+﻿using DtoLayer.Concrete;
 using MediatR;
 
 namespace BusinessLayer.Features.CQRS.Queries.Products;

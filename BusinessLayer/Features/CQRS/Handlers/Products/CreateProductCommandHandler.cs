@@ -1,5 +1,4 @@
-﻿using System;
-using BusinessLayer.Features.CQRS.Commands.Products;
+﻿using BusinessLayer.Features.CQRS.Commands.Products;
 using BusinessLayer.Repositories;
 using EntityLayer.Concrete;
 using MediatR;
@@ -19,9 +18,9 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandR
     {
         await _repository.CreateAsync(new Product
         {
-            Name=request.Name,
-            Price=request.Price,
-            Stock=request.Stock,
+            Name = request.Name,
+            Price = request.Price,
+            Stock = request.Stock,
         });
         return Unit.Value;
     }

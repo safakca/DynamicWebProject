@@ -1,5 +1,4 @@
-﻿using System;
-using BusinessLayer.Features.CQRS.Commands.Products;
+﻿using BusinessLayer.Features.CQRS.Commands.Products;
 using BusinessLayer.Repositories;
 using EntityLayer.Concrete;
 using MediatR;
@@ -8,7 +7,7 @@ namespace BusinessLayer.Features.CQRS.Handlers.Products;
 
 public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommandRequest>
 {
-	private readonly IRepository<Product> _repository;
+    private readonly IRepository<Product> _repository;
 
     public DeleteProductCommandHandler(IRepository<Product> repository)
     {

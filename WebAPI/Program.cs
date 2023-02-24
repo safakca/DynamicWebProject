@@ -1,5 +1,5 @@
-﻿using DataAccessLayer;
-using BusinessLayer;
+﻿using BusinessLayer;
+using DataAccessLayer;
 
 var builder = WebApplication.CreateBuilder(args);
 

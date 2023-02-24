@@ -1,12 +1,10 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using BusinessLayer.Repositories;
 using DtoLayer.Concrete;
 using EntityLayer.Concrete;
 using MediatR;
 
 namespace BusinessLayer.Features.CQRS.Queries.Products;
-
 public class GetProductsQueryHandler : IRequestHandler<GetProductQueryRequest, List<ProductDto>>
 {
     private readonly IRepository<Product> _repository;

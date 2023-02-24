@@ -1,5 +1,4 @@
-﻿using System;
-namespace PresentationLayer.Models;
+﻿namespace PresentationLayer.Models;
 
 public class ProductListModel
 {

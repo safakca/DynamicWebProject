@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BusinessLayer.Features.CQRS.Commands.Products;
 using BusinessLayer.Features.CQRS.Queries.Products;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -19,7 +14,7 @@ public class ProductController : ControllerBase
     public ProductController(IMediator mediator) => _mediator = mediator;
 
     [HttpGet("getall")]
-    public async Task<IActionResult> GetAll() =>  Ok(await _mediator.Send(new GetProductQueryRequest()));
+    public async Task<IActionResult> GetAll() => Ok(await _mediator.Send(new GetProductQueryRequest()));
 
     [HttpGet("get/{id}")]
     public async Task<IActionResult> Get(int id) => Ok(await _mediator.Send(new GetProductByIdQueryRequest(id)));

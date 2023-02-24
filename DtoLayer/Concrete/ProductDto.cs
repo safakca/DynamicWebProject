@@ -1,5 +1,4 @@
-﻿using System;
-namespace DtoLayer.Concrete;
+﻿namespace DtoLayer.Concrete;
 
 public class ProductDto
 {
