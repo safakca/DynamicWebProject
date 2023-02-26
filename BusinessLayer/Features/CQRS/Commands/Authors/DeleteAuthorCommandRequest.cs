@@ -2,4 +2,4 @@
 
 namespace BusinessLayer.Features.CQRS.Commands.Authors;
 
-public record DeleteAuthorCommandRequest(int id) : IRequest { }
+public record DeleteAuthorCommandRequest(int Id) : IRequest { }

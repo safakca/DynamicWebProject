@@ -1,5 +1,13 @@
-﻿namespace BusinessLayer.Features.CQRS.Queries.Authors;
+﻿using DtoLayer.Concrete.Authors;
+using MediatR;
 
-public class GetAuthorByIdQueryRequest
+namespace BusinessLayer.Features.CQRS.Queries.Authors;
+
+public class GetAuthorByIdQueryRequest : IRequest<AuthorsDto>
 {
+    public int Id { get; set; }
+    public GetAuthorByIdQueryRequest(int id)
+    {
+        Id = id;
+    }
 }
