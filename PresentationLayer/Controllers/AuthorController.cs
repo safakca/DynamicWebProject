@@ -8,12 +8,15 @@ using System.Text.Json;
 namespace PresentationLayer.Controllers;
 public class AuthorController : Controller
 {
+    #region Ctor
     private readonly IHttpClientFactory _httpClientFactory;
 
     public AuthorController(IHttpClientFactory httpClientFactory)
     {
         _httpClientFactory = httpClientFactory;
     }
+
+    #endregion
 
     #region List
     [HttpGet]
@@ -68,7 +71,7 @@ public class AuthorController : Controller
     public async Task<IActionResult> Create(CreateAuthorModel model)
     {
         AuthorValidator validator = new AuthorValidator();
-        ValidationResult result=validator.Validate(model);
+        ValidationResult result =validator.Validate(model);
         if (ModelState.IsValid)
         {
             var client = _httpClientFactory.CreateClient();
@@ -87,6 +90,7 @@ public class AuthorController : Controller
                 ModelState.AddModelError("", "Happened a error");
             }
         }
+
         else
         {
             foreach (ValidationFailure failer in result.Errors)
@@ -94,10 +98,12 @@ public class AuthorController : Controller
                 ModelState.AddModelError(failer.PropertyName, failer.ErrorMessage);
             }
         }
+
         return View(model);
     }
     #endregion
 
+    #region UpdateGet
     [HttpGet]
     public async Task<IActionResult> Update(int id)
     {
@@ -120,7 +126,9 @@ public class AuthorController : Controller
         return RedirectToAction("List");
     }
 
+    #endregion
 
+    #region UpdatePost
     [HttpPost]
     public async Task<IActionResult> Update(AuthorListModel model)
     {
@@ -148,8 +156,10 @@ public class AuthorController : Controller
         return View(model);
     }
 
+    #endregion
 
-    public async Task<IActionResult> Remove(int id)
+    #region Remove
+    public async Task<IActionResult> Delete(int id)
     {
 
         var client = _httpClientFactory.CreateClient(); 
@@ -163,5 +173,5 @@ public class AuthorController : Controller
         return RedirectToAction("List");
     }
 
-
+    #endregion
 }

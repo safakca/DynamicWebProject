@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -222,9 +223,9 @@ namespace DataAccessLayer.Migrations
                 columns: new[] { "Id", "age", "created_date", "name", "surname", "updated_date" },
                 values: new object[,]
                 {
-                    { 1, 35, new DateTime(2023, 2, 27, 6, 58, 16, 634, DateTimeKind.Utc).AddTicks(6917), "testName1", "testSurname1", new DateTime(2023, 2, 27, 6, 58, 16, 634, DateTimeKind.Utc).AddTicks(6920) },
-                    { 2, 36, new DateTime(2023, 2, 27, 6, 58, 16, 634, DateTimeKind.Utc).AddTicks(6923), "testName2", "testSurname2", new DateTime(2023, 2, 27, 6, 58, 16, 634, DateTimeKind.Utc).AddTicks(6923) },
-                    { 3, 37, new DateTime(2023, 2, 27, 6, 58, 16, 634, DateTimeKind.Utc).AddTicks(6924), "testName3", "testSurname3", new DateTime(2023, 2, 27, 6, 58, 16, 634, DateTimeKind.Utc).AddTicks(6925) }
+                    { 1, 35, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "testName1", "testSurname1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, 36, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "testName2", "testSurname2", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, 37, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "testName3", "testSurname3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(

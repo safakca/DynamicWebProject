@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230227065816_InitialCreate")]
+    [Migration("20230227085637_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -227,28 +227,28 @@ namespace DataAccessLayer.Migrations
                         {
                             Id = 1,
                             Age = 35,
-                            CreatedDate = new DateTime(2023, 2, 27, 6, 58, 16, 634, DateTimeKind.Utc).AddTicks(6917),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "testName1",
                             Surname = "testSurname1",
-                            UpdatedDate = new DateTime(2023, 2, 27, 6, 58, 16, 634, DateTimeKind.Utc).AddTicks(6920)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             Age = 36,
-                            CreatedDate = new DateTime(2023, 2, 27, 6, 58, 16, 634, DateTimeKind.Utc).AddTicks(6923),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "testName2",
                             Surname = "testSurname2",
-                            UpdatedDate = new DateTime(2023, 2, 27, 6, 58, 16, 634, DateTimeKind.Utc).AddTicks(6923)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             Age = 37,
-                            CreatedDate = new DateTime(2023, 2, 27, 6, 58, 16, 634, DateTimeKind.Utc).AddTicks(6924),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "testName3",
                             Surname = "testSurname3",
-                            UpdatedDate = new DateTime(2023, 2, 27, 6, 58, 16, 634, DateTimeKind.Utc).AddTicks(6925)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
