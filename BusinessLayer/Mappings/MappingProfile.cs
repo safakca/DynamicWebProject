@@ -16,12 +16,18 @@ public class MappingProfile : Profile
         CreateMap<Author, AuthorsDto>().ReverseMap();
         CreateMap<CreateAuthorCommandRequest, Author>().ReverseMap();
         CreateMap<UpdateAuthorCommandRequest, Author>().ReverseMap();
+        CreateMap<CreateAuthorDto, Author>().ReverseMap();
+        CreateMap<UpdateAuthorDto, Author>().ReverseMap();
+        
         #endregion 
 
         #region Article
         CreateMap<Article, ArticlesDto>().ReverseMap();
-        CreateMap<CreateArticleCommandRequest, Article>().ReverseMap(); 
+        CreateMap<CreateArticleCommandRequest, Article>().ReverseMap();
         CreateMap<UpdateArticleCommandRequest, Article>().ReverseMap();
+        CreateMap<CreateArticleDto, Article>().ReverseMap();
+        CreateMap<UpdateArticleDto, Article>().ReverseMap();
+
 
         #endregion
     }

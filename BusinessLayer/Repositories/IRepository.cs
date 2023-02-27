@@ -8,8 +8,8 @@ public interface IRepository<TEntity> where TEntity : BaseEntity
     Task<List<TEntity>> GetAllAsync();
     Task<TEntity?> GetAsync(object id);
     Task<TEntity?> GetByFilterAsync(Expression<Func<TEntity, bool>> filter);
-    Task CreateAsync(TEntity entity);
-    Task UpdateAsync(TEntity entity);
-    Task RemoveAsync(TEntity entity);
+    Task<TEntity> CreateAsync(TEntity entity);
+    Task<TEntity> UpdateAsync(TEntity entity);
+    Task<bool> RemoveAsync(TEntity entity);
 }
 

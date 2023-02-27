@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using DtoLayer.Concrete.Articles;
+using MediatR;
 
 namespace BusinessLayer.Features.CQRS.Commands.Articles;
 
-public class UpdateArticleCommandRequest :IRequest
+public class UpdateArticleCommandRequest : IRequest<UpdateArticleDto>
 {
     public int Id { get; set; }
     public int AuthorId { get; set; }

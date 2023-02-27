@@ -20,7 +20,7 @@ public class ProductController : Controller
 
         if (response.IsSuccessStatusCode)
         {
-            var jsonData = await response.Content.ReadAsByteArrayAsync();
+            var jsonData = await response.Content.ReadAsStringAsync();
             var result = JsonSerializer.Deserialize<List<ProductListModel>>(jsonData, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase

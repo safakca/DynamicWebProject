@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using DtoLayer.Concrete.Authors;
+using MediatR;
 
 namespace BusinessLayer.Features.CQRS.Commands.Authors;
 
-public class UpdateAuthorCommandRequest : IRequest
+public record UpdateAuthorCommandRequest : IRequest<UpdateAuthorDto>
 {
     public int Id { get; set; }
     public string Name { get; set; }

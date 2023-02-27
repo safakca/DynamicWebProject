@@ -1,26 +1,32 @@
-﻿using BusinessLayer.Features.CQRS.Commands.Articles;
+﻿using AutoMapper;
+using BusinessLayer.Features.CQRS.Commands.Articles;
 using BusinessLayer.Repositories;
+using DtoLayer.Concrete.Articles;
 using EntityLayer.Concrete;
 using MediatR;
 
 namespace BusinessLayer.Features.CQRS.Handlers.Articles;
 
-public class UpdateArticleCommandHandler : IRequestHandler<UpdateArticleCommandRequest>
+public class UpdateArticleCommandHandler : IRequestHandler<UpdateArticleCommandRequest, UpdateArticleDto>
 {
     private readonly IRepository<Article> _repository;
-
-    public UpdateArticleCommandHandler(IRepository<Article> repository) => _repository = repository;
-    
-    public async Task<Unit> Handle(UpdateArticleCommandRequest request, CancellationToken cancellationToken)
+    private readonly IMapper _mapper;
+    public UpdateArticleCommandHandler(IRepository<Article> repository )
     {
-        var updated = await _repository.GetAsync(request.Id);
-        if (updated != null)
-        {
-            updated.Title = request.Title;
-            updated.Description = request.Description;
-            updated.UpdatedDate = DateTime.UtcNow;
-            await _repository.UpdateAsync(updated);
-        }
-        return Unit.Value;
+        _repository = repository; 
+    }
+
+    public async Task<UpdateArticleDto> Handle(UpdateArticleCommandRequest request, CancellationToken cancellationToken)
+    {
+        var article = await _repository.GetAsync(request.Id);
+
+        article.AuthorId = request.AuthorId;
+        article.Title = request.Title;
+        article.Description = request.Description;
+        article.UpdatedDate = DateTime.UtcNow;
+
+        var updated = await _repository.UpdateAsync(article);
+        var mapped = _mapper.Map<UpdateArticleDto>(updated);
+        return mapped;
     }
 }

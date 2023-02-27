@@ -1,7 +1,8 @@
-﻿using MediatR;
+﻿using DtoLayer.Concrete.Authors;
+using MediatR;
 
 namespace BusinessLayer.Features.CQRS.Commands.Authors;
-public class CreateAuthorCommandRequest : IRequest
+public record CreateAuthorCommandRequest : IRequest<CreateAuthorDto>
 {
     public string Name { get; set; }
     public string Surname { get; set; }

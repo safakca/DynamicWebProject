@@ -5,7 +5,7 @@ dotnet tool install --global dotnet-ef
 dotnet tool install --global dotnet-ef --version 6.* 
 
 STEP-1) s
-**** WebAPI klasöründe yazılacak
+**** in WebAPI layer
 dotnet ef migrations add InitialCreate --project ../DataAccessLayer --context Context
 **** ROOT da yazılacak
 dotnet ef migrations add InitialCreate --startup-project ../WebAPI --project ../DataAccessLayer -c Context
@@ -13,7 +13,7 @@ dotnet ef migrations add "InitialCreate" --startup-project DynamicWebProject.Web
 
 
 STEP-2)  
-**** WebAPI klasöründe yazılacak
+**** in WebAPI layer
 dotnet ef database update --project ../DataAccessLayer --context Context
 
 **** ROOT da yazılacak

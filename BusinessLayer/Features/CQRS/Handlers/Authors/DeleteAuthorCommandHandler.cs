@@ -9,7 +9,7 @@ public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommandReq
 {
     private readonly IRepository<Author> _repository;
 
-    public DeleteAuthorCommandHandler(IRepository<Author> repository) =>_repository = repository;
+    public DeleteAuthorCommandHandler(IRepository<Author> repository) => _repository = repository;
 
     public async Task<Unit> Handle(DeleteAuthorCommandRequest request, CancellationToken cancellationToken)
     {

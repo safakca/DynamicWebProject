@@ -1,24 +1,32 @@
-﻿using BusinessLayer.Features.CQRS.Commands.Authors;
+﻿using AutoMapper;
+using BusinessLayer.Features.CQRS.Commands.Authors;
 using BusinessLayer.Repositories;
+using DtoLayer.Concrete.Authors;
 using EntityLayer.Concrete;
-using MediatR;
+using MediatR; 
 
 namespace BusinessLayer.Features.CQRS.Handlers.Authors;
 
-public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommandRequest>
+public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommandRequest, CreateAuthorDto>
 {
     private readonly IRepository<Author> _repository;
+    private readonly IMapper _mapper;
 
-    public CreateAuthorCommandHandler(IRepository<Author> repository) => _repository = repository;
-    
-    public async Task<Unit> Handle(CreateAuthorCommandRequest request, CancellationToken cancellationToken)
+    public CreateAuthorCommandHandler(IRepository<Author> repository, IMapper mapper)
     {
-        await _repository.CreateAsync(new Author
-        {
-            Name = request.Name,
-            Surname = request.Surname,
-            Age = request.Age
-        });
-        return Unit.Value;
+        _repository = repository;
+        _mapper = mapper;
     }
+
+    public async Task<CreateAuthorDto> Handle(CreateAuthorCommandRequest request, CancellationToken cancellationToken)
+    {
+        var author = _mapper.Map<Author>(request);
+        author.CreatedDate= DateTime.UtcNow;
+        var added = await _repository.CreateAsync(author);
+        var mapped = _mapper.Map<CreateAuthorDto>(added);
+
+        new Exception("Create is succeeded! ");
+        return mapped;
+
+    } 
 }

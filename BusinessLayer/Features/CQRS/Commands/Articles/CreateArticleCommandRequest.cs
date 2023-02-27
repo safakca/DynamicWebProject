@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using DtoLayer.Concrete.Articles;
+using MediatR;
 
 namespace BusinessLayer.Features.CQRS.Commands.Articles;
 
-public class CreateArticleCommandRequest : IRequest
+public record CreateArticleCommandRequest : IRequest<CreateArticleDto>
 {
     public int AuthorId { get; set; }
     public string Title { get; set; }

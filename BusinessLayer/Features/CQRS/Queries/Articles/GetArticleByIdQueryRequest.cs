@@ -1,5 +1,5 @@
-﻿using MediatR;
-using DtoLayer.Concrete.Articles;
+﻿using DtoLayer.Concrete.Articles;
+using MediatR;
 
 namespace BusinessLayer.Features.CQRS.Queries.Articles;
 
