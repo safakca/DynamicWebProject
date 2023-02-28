@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AuthorListModel>
+﻿@model IEnumerable<ArticleListModel>
 
 @{
     ViewData["Title"] = "List";
@@ -6,9 +6,9 @@
 }
 
 <h1>List</h1>
- 
+
 <p>
-    <a asp-action="Create" asp-controller="Author">Create New Author</a>
+    <a asp-action="Create" asp-controller="Article">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -17,13 +17,13 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.AuthorId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Surname)
+                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Age)
+                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreatedDate)
@@ -41,13 +41,13 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.AuthorId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Surname)
+                @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Age)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedDate)

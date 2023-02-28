@@ -1,4 +1,8 @@
 ﻿using BusinessLayer.Mappings;
+using BusinessLayer.Validations;
+using DtoLayer.Concrete.Articles;
+using DtoLayer.Concrete.Authors;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -12,6 +16,9 @@ public static class BusinessServiceRegistration
         services.AddAutoMapper(typeof(MappingProfile));
         services.AddMediatR(Assembly.GetExecutingAssembly());
 
-    }
+        services.AddTransient<IValidator<CreateAuthorDto>, AuthorAddValidator>();
+        services.AddTransient<IValidator<CreateArticleDto>, ArticleAddValidator>();
+
+    } 
 }
 

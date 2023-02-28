@@ -1,7 +1,5 @@
-﻿using FluentValidation.Results;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PresentationLayer.Models;
-using PresentationLayer.Validations;
 using System.Text;
 using System.Text.Json;
 
@@ -11,10 +9,8 @@ public class AuthorController : Controller
     #region Ctor
     private readonly IHttpClientFactory _httpClientFactory;
 
-    public AuthorController(IHttpClientFactory httpClientFactory)
-    {
-        _httpClientFactory = httpClientFactory;
-    }
+    public AuthorController(IHttpClientFactory httpClientFactory) =>_httpClientFactory = httpClientFactory;
+    
 
     #endregion
 
@@ -40,38 +36,40 @@ public class AuthorController : Controller
     }
     #endregion
 
+    #region Detail
+    public async Task<IActionResult> Details(int id)
+    {
+        var client = _httpClientFactory.CreateClient();
+        var response = await client.GetAsync($"http://localhost:5097/api/Authors/Get/{id}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var jsonData = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<AuthorListModel>(jsonData, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
+
+            return View(result);
+        }
+
+        return View();
+    } 
+
+    #endregion
+
     #region CreateGet
     [HttpGet]
-    public async Task<IActionResult> Create()
+    public IActionResult Create()
     {
         return View(new CreateAuthorModel());
-
-
-        //var model = new CreateAuthorModel();
-        //var client =_httpClientFactory.CreateClient();
-        //var response = await client.GetAsync("http://localhost:5097/api/Authors/Create");
-
-        //if (response.IsSuccessStatusCode)
-        //{
-        //    var jsonData = await response.Content.ReadAsStringAsync();
-
-        //    var data = JsonSerializer.Deserialize<List<AuthorListModel>>(jsonData, new JsonSerializerOptions
-        //    {
-        //        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-        //    });
-
-        //    return View(model);
-        //}
-        //return RedirectToAction("List");
     }
     #endregion
 
     #region CreatePost
     [HttpPost]
     public async Task<IActionResult> Create(CreateAuthorModel model)
-    {
-        AuthorValidator validator = new AuthorValidator();
-        ValidationResult result =validator.Validate(model);
+    { 
         if (ModelState.IsValid)
         {
             var client = _httpClientFactory.CreateClient();
@@ -89,16 +87,7 @@ public class AuthorController : Controller
             {
                 ModelState.AddModelError("", "Happened a error");
             }
-        }
-
-        else
-        {
-            foreach (ValidationFailure failer in result.Errors)
-            {
-                ModelState.AddModelError(failer.PropertyName, failer.ErrorMessage);
-            }
-        }
-
+        } 
         return View(model);
     }
     #endregion
@@ -114,7 +103,7 @@ public class AuthorController : Controller
         if (response.IsSuccessStatusCode)
         {
             var jsonData = await response.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<AuthorListModel>(jsonData, new JsonSerializerOptions
+            var result = JsonSerializer.Deserialize<UpdateAuthorModel>(jsonData, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             });
@@ -130,11 +119,10 @@ public class AuthorController : Controller
 
     #region UpdatePost
     [HttpPost]
-    public async Task<IActionResult> Update(AuthorListModel model)
+    public async Task<IActionResult> Update(UpdateAuthorModel model)
     {
         if (ModelState.IsValid)
-        {
-
+        { 
             var client = _httpClientFactory.CreateClient();
 
             var jsonData = JsonSerializer.Serialize(model);
@@ -150,19 +138,20 @@ public class AuthorController : Controller
             else
             {
                 ModelState.AddModelError("", "Happened a error");
-            }
-
+            } 
         }
         return View(model);
     }
 
     #endregion
 
-    #region Remove
-    public async Task<IActionResult> Delete(int id)
+    #region DeleteGet   
+
+    [HttpPost]
+    public async Task<IActionResult> DeletePost(int id)
     {
 
-        var client = _httpClientFactory.CreateClient(); 
+        var client = _httpClientFactory.CreateClient();
 
         var response = await client.DeleteAsync($"http://localhost:5097/api/Authors/Delete/{id}");
         if (response.IsSuccessStatusCode)
@@ -173,5 +162,27 @@ public class AuthorController : Controller
         return RedirectToAction("List");
     }
 
+    #endregion
+
+    #region DeletePost
+    [HttpGet]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var client = _httpClientFactory.CreateClient();
+        var response = await client.GetAsync($"http://localhost:5097/api/Authors/Get/{id}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var jsonData = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<AuthorListModel>(jsonData, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
+
+            return View(result);
+        }
+
+        return View();
+    } 
     #endregion
 }

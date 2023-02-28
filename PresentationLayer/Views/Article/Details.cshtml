@@ -1,15 +1,14 @@
-﻿@model AuthorListModel
+﻿@model ArticleListModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Delete</h1>
+<h1>Details</h1>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>AuthorListModel</h4>
+    <h4>ArticleListModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -19,22 +18,22 @@
             @Html.DisplayFor(model => model.Id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.AuthorId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.AuthorId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Surname)
+            @Html.DisplayNameFor(model => model.Title)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Surname)
+            @Html.DisplayFor(model => model.Title)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Age)
+            @Html.DisplayNameFor(model => model.Description)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Age)
+            @Html.DisplayFor(model => model.Description)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedDate)
@@ -49,10 +48,8 @@
             @Html.DisplayFor(model => model.UpdatedDate)
         </dd>
     </dl>
-    
-    <form asp-action="DeletePost">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="List" asp-controller="Author">Back to List</a>
-    </form>
+</div>
+<div>
+    @Html.ActionLink("Update", "Update", new { Model.Id }) |
+    <a asp-action="List" asp-controller="Article">Back to List</a>
 </div>

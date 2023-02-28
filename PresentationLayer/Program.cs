@@ -1,15 +1,9 @@
-﻿using FluentValidation;
-using PresentationLayer.Models;
-using PresentationLayer.Validations;
-using System;
-
-var builder = WebApplication.CreateBuilder(args);
+﻿var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpClient();
-builder.Services.AddScoped<IValidator<CreateAuthorModel>, AuthorValidator>();
 
 var app = builder.Build();
 

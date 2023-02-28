@@ -28,5 +28,5 @@ public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommandReq
         var updated = await _repository.UpdateAsync(author);
         var mapped = _mapper.Map<UpdateAuthorDto>(updated);
         return mapped;
-    } 
+    }
 }

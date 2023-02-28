@@ -22,12 +22,10 @@
     <None Remove="Features\CQRS\Queries\Products\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\CQRS\Commands\Products\" />
-    <Folder Include="Features\CQRS\Handlers\Products\" />
     <Folder Include="Mappings\" />
-    <Folder Include="Features\CQRS\Queries\Products\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.5.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
   </ItemGroup>

@@ -10,7 +10,6 @@ namespace WebAPI.Controllers;
 public class AuthorsController : ControllerBase
 {
     private readonly IMediator _mediator;
-
     public AuthorsController(IMediator mediator) => _mediator = mediator;
 
     [HttpGet("getall")]
