@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Todo>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="display-4">ToDo List</h1>
+ 
+<p>
+    <a asp-action="Create" asp-controller="Todo">Create New Todo</a>
+</p>
+<table class="table table-borderless table-striped table-hover">
+    <thead>
+        <tr> 
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Status)</th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+            <td>@if (item.Status == EntityLayer.Enums.TodoStatus.pass)
+                {
+                    <span class="badge bg-success">Pass</span>
+                }
+                else
+                {
+                    <span class="badge bg-warning text-dark">Pocessing</span>
+                } 
+
+            <td>
+                @*<a asp-action="Update" asp-controller="Todo" asp-route="@item" class="btn btn-warning"></a>*@
+                @Html.ActionLink("Update", "Update", new { @item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { @item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

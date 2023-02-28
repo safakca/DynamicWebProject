@@ -11,12 +11,17 @@ public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : Base
     private readonly Context _context;
 
     public BaseRepository(Context context) => _context = context;
-
+  
     public async Task<TEntity> CreateAsync(TEntity entity)
     {
         await _context.Set<TEntity>().AddAsync(entity);
         await _context.SaveChangesAsync();
         return entity;
+    }
+
+    public List<TEntity> GetAll()
+    {
+        return _context.Set<TEntity>().ToList();
     }
 
     public async Task<List<TEntity>> GetAllAsync()
@@ -47,5 +52,7 @@ public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : Base
         await _context.SaveChangesAsync();
         return entity;
     }
+
+    
 }
 

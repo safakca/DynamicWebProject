@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Repositories;
+using ClosedXML.Excel;
+using EntityLayer.Concrete; 
+using Microsoft.AspNetCore.Mvc;
 using PresentationLayer.Models;
 using System.Text;
 using System.Text.Json;
@@ -7,10 +10,8 @@ namespace PresentationLayer.Controllers;
 public class AuthorController : Controller
 {
     #region Ctor
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IHttpClientFactory _httpClientFactory;    private readonly IRepository<Author> _repository;    public AuthorController(IHttpClientFactory httpClientFactory, IRepository<Author> repository)    {        _httpClientFactory = httpClientFactory;        _repository = repository;    }
 
-    public AuthorController(IHttpClientFactory httpClientFactory) =>_httpClientFactory = httpClientFactory;
-    
 
     #endregion
 
@@ -69,7 +70,7 @@ public class AuthorController : Controller
     #region CreatePost
     [HttpPost]
     public async Task<IActionResult> Create(CreateAuthorModel model)
-    { 
+    {
         if (ModelState.IsValid)
         {
             var client = _httpClientFactory.CreateClient();
@@ -183,6 +184,38 @@ public class AuthorController : Controller
         }
 
         return View();
-    } 
+    }
     #endregion
+     
+    public async Task<ActionResult> DownloadExcel()
+    {
+        var Authors = await _repository.GetAllAsync();
+        using (var workbook = new XLWorkbook())
+        {
+            var worksheet = workbook.Worksheets.Add("Authors");
+            var currentRow = 1;
+            worksheet.Cell(currentRow, 1).Value = "Name";
+            worksheet.Cell(currentRow, 2).Value = "Surname";
+            worksheet.Cell(currentRow, 3).Value = "Age";
+            worksheet.Cell(currentRow, 4).Value = "CreatedDate";
+            worksheet.Cell(currentRow, 5).Value = "UpdatedDate";
+
+            foreach (var author in Authors)
+            {
+                currentRow++;
+                worksheet.Cell(currentRow, 1).Value += author.Name;
+                worksheet.Cell(currentRow, 2).Value += author.Surname;
+                worksheet.Cell(currentRow, 3).Value += author.Age.ToString();
+                worksheet.Cell(currentRow, 4).Value += author.CreatedDate.ToString();
+                worksheet.Cell(currentRow, 5).Value += author.UpdatedDate.ToString();
+            }
+
+            using (var stream = new MemoryStream())
+            {
+                workbook.SaveAs(stream);
+                var content = stream.ToArray();
+                return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Author.xlsx");
+            }
+        }
+    }
 }

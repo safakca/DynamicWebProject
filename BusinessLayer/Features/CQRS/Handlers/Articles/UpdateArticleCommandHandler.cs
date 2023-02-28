@@ -11,9 +11,10 @@ public class UpdateArticleCommandHandler : IRequestHandler<UpdateArticleCommandR
 {
     private readonly IRepository<Article> _repository;
     private readonly IMapper _mapper;
-    public UpdateArticleCommandHandler(IRepository<Article> repository)
+    public UpdateArticleCommandHandler(IRepository<Article> repository, IMapper mapper)
     {
         _repository = repository;
+        _mapper = mapper;
     }
 
     public async Task<UpdateArticleDto> Handle(UpdateArticleCommandRequest request, CancellationToken cancellationToken)

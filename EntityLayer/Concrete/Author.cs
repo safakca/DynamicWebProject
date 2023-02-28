@@ -1,12 +1,12 @@
-﻿using EntityLayer.Common;
+﻿using EntityLayer.Common; 
 
 namespace EntityLayer.Concrete;
 public class Author : BaseEntity, ICreatedDate, IUpdatedDate
-{
-    public string Name { get; set; }
-    public string Surname { get; set; }
-    public int Age { get; set; }
-    public DateTime CreatedDate { get; set; }
+{ 
+    public string Name { get; set; } 
+    public string Surname { get; set; } 
+    public int Age { get; set; } 
+    public DateTime CreatedDate { get; set; } 
     public DateTime UpdatedDate { get; set; }
 
     public virtual ICollection<Article> Articles { get; set; }

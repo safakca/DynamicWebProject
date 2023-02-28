@@ -11,12 +11,12 @@ public class AuthorConfiguration : IEntityTypeConfiguration<Author>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Name).IsRequired().HasColumnName("name");
-        builder.Property(a => a.Surname).IsRequired().HasColumnName("surname");
-        builder.Property(a => a.Age).HasColumnName("age");
-        builder.Property(a => a.CreatedDate).HasColumnName("created_date");
-        builder.Property(a => a.UpdatedDate).HasColumnName("updated_date");
+        builder.Property(x => x.Surname).IsRequired().HasColumnName("surname");
+        builder.Property(x => x.Age).HasColumnName("age");
+        builder.Property(x => x.CreatedDate).HasColumnName("created_date");
+        builder.Property(x => x.UpdatedDate).HasColumnName("updated_date");
 
-        builder.HasMany(a => a.Articles);
+        builder.HasMany(x => x.Articles);
 
         Author[] authors =
         {
