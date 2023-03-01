@@ -13,7 +13,7 @@ public class TodoConfiguration : IEntityTypeConfiguration<Todo>
         builder.Property(x => x.Title).IsRequired().HasColumnName("title");
         builder.Property(x => x.Description).IsRequired().HasColumnName("description");
         builder.Property(x => x.Status).HasColumnName("status");
-         
+
         Todo[] todos =
         {
             new() { Id= 1, Title="title1", Description="description1", Status=0 },

@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BusinessLayer.Repositories;
 using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; 
 
 namespace PresentationLayer.Controllers;
 
@@ -24,7 +20,7 @@ public class TodoController : Controller
     }
 
     public IActionResult Create()
-    {
+    { 
         return View();
     }
 
@@ -42,7 +38,8 @@ public class TodoController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Update(Todo todo) {
+    public async Task<IActionResult> Update(Todo todo)
+    {
         await _repository.UpdateAsync(todo);
         return RedirectToAction("List", "Todo");
     }

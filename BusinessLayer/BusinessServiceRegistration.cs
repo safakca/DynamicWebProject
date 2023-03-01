@@ -19,6 +19,6 @@ public static class BusinessServiceRegistration
         services.AddTransient<IValidator<CreateAuthorDto>, AuthorAddValidator>();
         services.AddTransient<IValidator<CreateArticleDto>, ArticleAddValidator>();
 
-    } 
+    }
 }
 

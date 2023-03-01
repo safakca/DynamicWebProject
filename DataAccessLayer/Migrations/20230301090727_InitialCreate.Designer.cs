@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230228114305_addedTodo")]
-    partial class addedTodo
+    [Migration("20230301090727_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -268,18 +268,51 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("description");
 
                     b.Property<int>("Status")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("status");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("title");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Todos");
+                    b.ToTable("Todo", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "description1",
+                            Status = 0,
+                            Title = "title1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "description2",
+                            Status = 0,
+                            Title = "title2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "description3",
+                            Status = 0,
+                            Title = "title3"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "description4",
+                            Status = 0,
+                            Title = "title4"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

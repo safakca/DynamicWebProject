@@ -20,7 +20,4 @@
   <ItemGroup>
     <None Remove="Views\Todo\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Todo\" />
-  </ItemGroup>
 </Project>

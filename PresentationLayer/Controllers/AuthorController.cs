@@ -1,6 +1,6 @@
 ﻿using BusinessLayer.Repositories;
 using ClosedXML.Excel;
-using EntityLayer.Concrete; 
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using PresentationLayer.Models;
 using System.Text;
@@ -55,7 +55,7 @@ public class AuthorController : Controller
         }
 
         return View();
-    } 
+    }
 
     #endregion
 
@@ -88,7 +88,7 @@ public class AuthorController : Controller
             {
                 ModelState.AddModelError("", "Happened a error");
             }
-        } 
+        }
         return View(model);
     }
     #endregion
@@ -123,7 +123,7 @@ public class AuthorController : Controller
     public async Task<IActionResult> Update(UpdateAuthorModel model)
     {
         if (ModelState.IsValid)
-        { 
+        {
             var client = _httpClientFactory.CreateClient();
 
             var jsonData = JsonSerializer.Serialize(model);
@@ -139,7 +139,7 @@ public class AuthorController : Controller
             else
             {
                 ModelState.AddModelError("", "Happened a error");
-            } 
+            }
         }
         return View(model);
     }
@@ -186,7 +186,7 @@ public class AuthorController : Controller
         return View();
     }
     #endregion
-     
+
     public async Task<ActionResult> DownloadExcel()
     {
         var Authors = await _repository.GetAllAsync();

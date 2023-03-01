@@ -1,5 +1,4 @@
-﻿using System;
-using EntityLayer.Common;
+﻿using EntityLayer.Common;
 using EntityLayer.Enums;
 
 namespace EntityLayer.Concrete;

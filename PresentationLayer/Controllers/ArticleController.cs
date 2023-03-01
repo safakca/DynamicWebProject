@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
-using System.Text;
 using PresentationLayer.Models;
+using System.Text;
+using System.Text.Json;
 
 namespace PresentationLayer.Controllers;
 public class ArticleController : Controller
@@ -58,7 +58,7 @@ public class ArticleController : Controller
     #region CreateGet
     [HttpGet]
     public IActionResult Create()
-    { 
+    {
         return View(new CreateArticleModel());
     }
     #endregion
@@ -66,7 +66,7 @@ public class ArticleController : Controller
     #region CreatePost
     [HttpPost]
     public async Task<IActionResult> Create(CreateArticleModel model)
-    { 
+    {
         if (ModelState.IsValid)
         {
             var client = _httpClientFactory.CreateClient();
@@ -84,7 +84,7 @@ public class ArticleController : Controller
             {
                 ModelState.AddModelError("", "Happened a error");
             }
-        }  
+        }
         return View(model);
     }
     #endregion
@@ -136,7 +136,7 @@ public class ArticleController : Controller
             else
             {
                 ModelState.AddModelError("", "Happened a error");
-            } 
+            }
         }
         return View(model);
     }

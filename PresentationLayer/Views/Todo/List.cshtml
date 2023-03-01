@@ -5,41 +5,52 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class="display-4">ToDo List</h1>
- 
+<h1>List</h1>
+
 <p>
-    <a asp-action="Create" asp-controller="Todo">Create New Todo</a>
+    <a asp-action="Create" asp-controller="Todo">Create New</a>
 </p>
-<table class="table table-borderless table-striped table-hover">
+<table class="table">
     <thead>
-        <tr> 
-            <th>@Html.DisplayNameFor(model => model.Title)</th>
-            <th>@Html.DisplayNameFor(model => model.Description)</th>
-            <th>@Html.DisplayNameFor(model => model.Status)</th>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
 
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.Title)</td>
-            <td>@Html.DisplayFor(modelItem => item.Description)</td>
-            <td>@if (item.Status == EntityLayer.Enums.TodoStatus.pass)
-                {
-                    <span class="badge bg-success">Pass</span>
-                }
-                else
-                {
-                    <span class="badge bg-warning text-dark">Pocessing</span>
-                } 
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
 
-            <td>
-                @*<a asp-action="Update" asp-controller="Todo" asp-route="@item" class="btn btn-warning"></a>*@
-                @Html.ActionLink("Update", "Update", new { @item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { @item.Id })
-            </td>
-        </tr>
-}
+                <td>
+                    @Html.ActionLink("Edit", "Update", new { @item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { @item.Id  })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

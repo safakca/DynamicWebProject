@@ -1,5 +1,4 @@
 ﻿using DtoLayer.Concrete.Articles;
-using EntityLayer.Concrete;
 using FluentValidation;
 
 namespace BusinessLayer.Validations;

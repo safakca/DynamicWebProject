@@ -76,6 +76,21 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Todo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    title = table.Column<string>(type: "text", nullable: false),
+                    description = table.Column<string>(type: "text", nullable: false),
+                    status = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Todo", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -215,6 +230,17 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Todo",
+                columns: new[] { "Id", "description", "status", "title" },
+                values: new object[,]
+                {
+                    { 1, "description1", 0, "title1" },
+                    { 2, "description2", 0, "title2" },
+                    { 3, "description3", 0, "title3" },
+                    { 4, "description4", 0, "title4" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Article",
                 columns: new[] { "Id", "AuthorId", "CreatedDate", "Description", "Title", "UpdatedDate" },
                 values: new object[,]
@@ -287,6 +313,9 @@ namespace DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Todo");
 
             migrationBuilder.DropTable(
                 name: "Author");
