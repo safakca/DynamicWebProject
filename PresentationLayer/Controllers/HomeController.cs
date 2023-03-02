@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PresentationLayer.Models;
 using System.Diagnostics;
 
@@ -17,16 +18,28 @@ namespace PresentationLayer.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        [Authorize(Roles = "Admin")]
+        public string AdminPage()
         {
-            return View();
+            return "AdminPage";
         }
+
+        [Authorize(Roles = "Member")]
+        public string MemberPage()
+        {
+            return "MemberPage";
+        }
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+       
     }
 }

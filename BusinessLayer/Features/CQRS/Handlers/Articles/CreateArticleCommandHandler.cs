@@ -26,7 +26,6 @@ public class CreateArticleCommandHandler : IRequestHandler<CreateArticleCommandR
         var mapped = _mapper.Map<CreateArticleDto>(added);
 
         new Exception("Create is succeeded! ");
-        return mapped;
-    }
-
+        return mapped; 
+    } 
 }

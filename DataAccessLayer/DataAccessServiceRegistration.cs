@@ -1,10 +1,13 @@
 ﻿using BusinessLayer.Repositories;
 using DataAccessLayer.Concrete;
-using DataAccessLayer.Repositories;
-using EntityLayer.Concrete;
+using DataAccessLayer.Infrastructure.Tools;
+using DataAccessLayer.Repositories; 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens; 
+using System.Text;
 
 namespace DataAccessLayer;
 
@@ -15,10 +18,12 @@ public static class DataAccessServiceRegistration
         services.AddDbContext<Context>(opt =>
         {
             opt.UseNpgsql(configuration.GetConnectionString("Local"));
-        });
-        services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+        }); 
+        //services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 
         services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+         
     }
 }
+
 

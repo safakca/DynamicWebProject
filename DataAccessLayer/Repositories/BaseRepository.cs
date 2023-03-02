@@ -11,7 +11,7 @@ public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : Base
     private readonly Context _context;
 
     public BaseRepository(Context context) => _context = context;
-  
+
     public async Task<TEntity> CreateAsync(TEntity entity)
     {
         await _context.Set<TEntity>().AddAsync(entity);
@@ -53,6 +53,6 @@ public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : Base
         return entity;
     }
 
-    
+
 }
 

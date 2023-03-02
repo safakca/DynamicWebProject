@@ -1,6 +1,5 @@
 ﻿using EntityLayer.Common;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Repositories;
 
@@ -10,7 +9,7 @@ public interface IRepository<TEntity> where TEntity : BaseEntity
     Task<TEntity?> GetAsync(object id);
     List<TEntity> GetAll();
     Task<TEntity?> GetByFilterAsync(Expression<Func<TEntity, bool>> filter);
-    Task<TEntity> CreateAsync(TEntity entity); 
+    Task<TEntity> CreateAsync(TEntity entity);
     Task<TEntity> UpdateAsync(TEntity entity);
     Task<bool> RemoveAsync(TEntity entity);
 }

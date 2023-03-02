@@ -1,9 +1,8 @@
-﻿using System;
-namespace EntityLayer.Enums;
+﻿namespace EntityLayer.Enums;
 
 public enum TodoStatus
 {
-	processing,
-	pass
+    processing,
+    pass
 }
 
