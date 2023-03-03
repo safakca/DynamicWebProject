@@ -61,6 +61,12 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("AppRoleId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MailCode")
+                        .HasColumnType("text");
+
                     b.Property<string>("Password")
                         .HasColumnType("text");
 
@@ -78,6 +84,8 @@ namespace DataAccessLayer.Migrations
                         {
                             Id = 1,
                             AppRoleId = 1,
+                            Email = "safakcatest@gmail.com",
+                            MailCode = "442888",
                             Password = "testSifre123**",
                             UserName = "safakca"
                         });

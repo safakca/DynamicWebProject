@@ -2,13 +2,12 @@ using BusinessLayer.Features.CQRS.Commands.Authors;
 using BusinessLayer.Features.CQRS.Queries.Authors;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc; 
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-//[Authorize(Roles = "Admin")]
 [AllowAnonymous]
 public class AuthorsController : ControllerBase
 {

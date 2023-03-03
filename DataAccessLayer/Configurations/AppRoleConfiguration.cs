@@ -9,7 +9,7 @@ public class AppRoleConfiguration : IEntityTypeConfiguration<AppRole>
     {
         builder.ToTable(nameof(AppRole));
         builder.HasKey(x => x.Id);
- 
+
 
         AppRole[] roles =
         {

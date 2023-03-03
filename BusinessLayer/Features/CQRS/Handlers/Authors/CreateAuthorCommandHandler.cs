@@ -20,6 +20,12 @@ public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommandReq
 
     public async Task<CreateAuthorDto> Handle(CreateAuthorCommandRequest request, CancellationToken cancellationToken)
     {
+        var exist = await _repository.GetAllAsync();
+        if (exist.Any(x => x.Name == request.Name))
+        {
+            throw new Exception("Dublicate Author Name!");
+        }
+
         var author = _mapper.Map<Author>(request);
         author.CreatedDate = DateTime.UtcNow;
         var added = await _repository.CreateAsync(author);

@@ -1,5 +1,5 @@
-﻿using DataAccessLayer.Configurations; 
-using EntityLayer.Concrete; 
+﻿using DataAccessLayer.Configurations;
+using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Concrete;

@@ -9,17 +9,16 @@ using System.Text.Json;
 
 namespace PresentationLayer.Controllers;
 
-//[Authorize(Roles = "Admin")]
-[AllowAnonymous]
+
 public class AuthorController : Controller
 {
     #region Ctor
     private readonly IHttpClientFactory _httpClientFactory;    private readonly IRepository<Author> _repository;    public AuthorController(IHttpClientFactory httpClientFactory, IRepository<Author> repository)    {        _httpClientFactory = httpClientFactory;        _repository = repository;    }
 
-
     #endregion
 
     #region List
+    [Authorize(Roles = "Admin, Member")]
     [HttpGet]
     public async Task<IActionResult> List()
     {
@@ -28,6 +27,7 @@ public class AuthorController : Controller
         {
             var client = _httpClientFactory.CreateClient();
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
             var response = await client.GetAsync("http://localhost:5097/api/Authors/GetAll");
 
             if (response.IsSuccessStatusCode)
@@ -46,6 +46,7 @@ public class AuthorController : Controller
     #endregion
 
     #region Detail
+    [Authorize(Roles = "Admin, Member")]
     public async Task<IActionResult> Details(int id)
     {
         var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
@@ -72,6 +73,7 @@ public class AuthorController : Controller
     #endregion
 
     #region CreateGet
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult Create()
     {
@@ -80,6 +82,7 @@ public class AuthorController : Controller
     #endregion
 
     #region CreatePost
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> Create(CreateAuthorModel model)
     {
@@ -90,7 +93,7 @@ public class AuthorController : Controller
             {
                 var client = _httpClientFactory.CreateClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                
+
 
                 var jsonData = JsonSerializer.Serialize(model);
 
@@ -99,12 +102,16 @@ public class AuthorController : Controller
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("List");
+                    return RedirectToAction("List", "Author");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Happened a error");
+                    ModelState.AddModelError("", "Dublicate Author Name! ");
                 }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Token is null! ");
             }
         }
         return View(model);
@@ -112,6 +119,7 @@ public class AuthorController : Controller
     #endregion
 
     #region UpdateGet
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> Update(int id)
     {
@@ -141,6 +149,7 @@ public class AuthorController : Controller
     #endregion
 
     #region UpdatePost
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> Update(UpdateAuthorModel model)
     {
@@ -174,7 +183,7 @@ public class AuthorController : Controller
     #endregion
 
     #region DeletePost   
-
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> DeletePost(int id)
     {
@@ -186,13 +195,14 @@ public class AuthorController : Controller
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             var response = await client.DeleteAsync($"http://localhost:5097/api/Authors/Delete/{id}");
-        } 
+        }
         return RedirectToAction("List");
     }
 
     #endregion
 
     #region DeleteGet
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
@@ -219,6 +229,7 @@ public class AuthorController : Controller
     #endregion
 
     #region DowloandExcel
+    [Authorize(Roles = "Admin, Member")]
     public async Task<ActionResult> DownloadExcel()
     {
         var Authors = await _repository.GetAllAsync();

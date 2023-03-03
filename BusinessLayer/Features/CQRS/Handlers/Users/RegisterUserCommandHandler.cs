@@ -13,12 +13,22 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommandReq
 
     public async Task<Unit> Handle(RegisterUserCommandRequest request, CancellationToken cancellationToken)
     {
+        var exist = await _repository.GetAllAsync();
+        if (exist.Any(x => x.UserName == request.Username))
+        {
+            throw new Exception("Dublicate Username!");
+        }
+
         await _repository.CreateAsync(new AppUser
         {
             Password = request.Password,
             UserName = request.Username,
+            Email = request.Email,
+            MailCode = new Random().Next(10000, 999999).ToString(),
             AppRoleId = (int)RoleType.Member,
-        });
+        }) ;
         return Unit.Value;
     }
 }
+
+

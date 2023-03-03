@@ -1,14 +1,17 @@
-﻿using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using BusinessLayer.Repositories;
+using EntityLayer.Concrete;
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
+using PresentationLayer.Models;
 using PresentationLayer.Models.Users;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text.Json;
 using System.Text;
-using PresentationLayer.Models;
+using System.Text.Json;
 
 namespace PresentationLayer.Controllers;
 
@@ -16,9 +19,11 @@ public class AccountController : Controller
 {
     #region Ctor
     private readonly IHttpClientFactory _httpClientFactory;
-    public AccountController(IHttpClientFactory httpClientFactory)
+    private readonly IRepository<AppUser> _repository;
+    public AccountController(IHttpClientFactory httpClientFactory, IRepository<AppUser> repository)
     {
         _httpClientFactory = httpClientFactory;
+        _repository = repository;
     }
     #endregion
 
@@ -63,7 +68,7 @@ public class AccountController : Controller
                     var authProps = new AuthenticationProperties
                     {
                         ExpiresUtc = tokenModel.ExpireDate,
-                        IsPersistent = true  
+                        IsPersistent = true
                     };
                     await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
 
@@ -82,8 +87,7 @@ public class AccountController : Controller
     #region Logout
     public IActionResult Logout()
     {
-        //await _signInManager.SignOutAsync();
-
+        ModelState.Clear(); 
         return RedirectToAction("Login");
     }
     #endregion
@@ -92,44 +96,76 @@ public class AccountController : Controller
     [HttpGet]
     public IActionResult Register()
     {
-        return View();
+        return View(new RegisterViewModel());
     }
     #endregion
 
     #region RegisterPost
     [HttpPost]
-    public IActionResult Register(AppUserRegisterViewModel appUserRegisterViewModel)
+    public async Task<IActionResult> Register(RegisterViewModel model)
     {
         if (ModelState.IsValid)
         {
-            AppUser appUser = new AppUser()
-            { 
-                UserName = appUserRegisterViewModel.Username,
-                Password= appUserRegisterViewModel.Password, 
-            };
+            var client = _httpClientFactory.CreateClient();
+            var content = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, "application/json");
+            model.MailCode = new Random().Next(10000, 999999).ToString();
 
-            if (appUserRegisterViewModel.Password == appUserRegisterViewModel.ConfirmPassword)
+            if (model.Password == model.ConfirmPassword)
             {
-                var result = await _userManager.CreateAsync(appUser, appUserRegisterViewModel.Password);
-                if (result.Succeeded)
+                
+                var response = await client.PostAsync("http://localhost:5097/api/Auth/Register", content);
+            
+                if (response.IsSuccessStatusCode)
                 {
+                    //SendEmail(model.Email, model.MailCode);
                     return RedirectToAction("Login", "Account");
                 }
                 else
                 {
-                    foreach (var item in result.Errors)
-                    {
-                        ModelState.AddModelError("", item.Description);
-                    }
+                    ModelState.AddModelError("", "Dublicate Username! ");
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Password Not Combine");
+                ModelState.AddModelError("", "Password and confirm password does not match ! ");
             }
         }
+        return View(model);
+    }
+
+
+    #endregion
+
+    #region SendMail
+    public void SendEmail(string email, string emailcode)
+    {
+        MimeMessage mimeMessage = new MimeMessage();
+
+        MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "safakcatest@gmail.com");
+        mimeMessage.From.Add(mailboxAddressFrom);
+
+        MailboxAddress mailboxAddressTo = new MailboxAddress("User", email);
+        mimeMessage.To.Add(mailboxAddressTo);
+
+        var bodyBuilder = new BodyBuilder();
+        bodyBuilder.TextBody = emailcode;
+        mimeMessage.Body = bodyBuilder.ToMessageBody();
+
+        mimeMessage.Subject = "Register Form";
+
+        SmtpClient smtp = new SmtpClient();
+        smtp.Connect("smtp.gmail.com", 587, false);
+        smtp.Authenticate("safakcatest@gmail.com", "testSifre123**");
+        smtp.Send(mimeMessage);
+        smtp.Disconnect(true);
+    }
+
+    #endregion
+   
+    #region AccessDenied
+    public IActionResult AccessDenied()
+    {
         return View();
     } 
     #endregion
-
 }

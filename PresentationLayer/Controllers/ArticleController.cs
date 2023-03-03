@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PresentationLayer.Models;
 using System.Text;
 using System.Text.Json;
 
 namespace PresentationLayer.Controllers;
+
 public class ArticleController : Controller
 {
     #region Ctor
@@ -12,6 +14,7 @@ public class ArticleController : Controller
     #endregion
 
     #region List
+    [Authorize(Roles = "Admin, Member")]
     [HttpGet]
     public async Task<IActionResult> List()
     {
@@ -34,6 +37,7 @@ public class ArticleController : Controller
     #endregion
 
     #region Detail
+    [Authorize(Roles = "Admin, Member")]
     public async Task<IActionResult> Details(int id)
     {
         var client = _httpClientFactory.CreateClient();
@@ -56,6 +60,7 @@ public class ArticleController : Controller
     #endregion
 
     #region CreateGet
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult Create()
     {
@@ -64,6 +69,7 @@ public class ArticleController : Controller
     #endregion
 
     #region CreatePost
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> Create(CreateArticleModel model)
     {
@@ -90,6 +96,7 @@ public class ArticleController : Controller
     #endregion
 
     #region UpdateGet
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> Update(int id)
     {
@@ -115,6 +122,7 @@ public class ArticleController : Controller
     #endregion
 
     #region UpdatePost
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> Update(UpdateArticleModel model)
     {
@@ -144,7 +152,7 @@ public class ArticleController : Controller
     #endregion
 
     #region DeleteGet   
-
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> DeletePost(int id)
     {
@@ -163,6 +171,7 @@ public class ArticleController : Controller
     #endregion
 
     #region DeletePost
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
@@ -183,5 +192,5 @@ public class ArticleController : Controller
         return View();
     }
     #endregion
-     
+
 }
