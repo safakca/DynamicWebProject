@@ -46,9 +46,10 @@
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
 
-                <td>
-                    @Html.ActionLink("Edit", "Update", new { @item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { @item.Id  })
+                <td> 
+                    @Html.ActionLink("Edit", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"}) | 
+                    @Html.ActionLink("Delete", "Delete", new { item.Id }, new{@class="btn btn-danger mdi mdi-delete"} )
+
                 </td>
             </tr>
         }

@@ -72,7 +72,7 @@ public class AccountController : Controller
                     };
                     await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("List", "Author");
                 }
             }
             else
