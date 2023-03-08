@@ -11,11 +11,11 @@ public class AppRoleConfiguration : IEntityTypeConfiguration<AppRole>
         builder.HasKey(x => x.Id);
 
 
-        AppRole[] roles =
-        {
-            new() { Id=1, Defination="Admin" },
-            new() { Id=2, Defination="Member" }
-        };
-        builder.HasData(roles);
+        //AppRole[] roles =
+        //{
+        //    new() { Id=1, Defination="Admin" },
+        //    new() { Id=2, Defination="Member" }
+        //};
+        //builder.HasData(roles);
     }
 }

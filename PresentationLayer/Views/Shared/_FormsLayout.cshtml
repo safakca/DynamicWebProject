@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<div class="container">
+    @RenderSection("Title", required: false)
+
+    <div class="row">
+        <div class="col-12">
+
+            @RenderBody()
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+@await RenderSectionAsync("Scripts", required: false)

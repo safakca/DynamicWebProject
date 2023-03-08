@@ -2,76 +2,80 @@
 
 @{
     ViewData["Title"] = "List";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_FormsLayout.cshtml";
+}
+@section Title
+    {
+    <h2 class="card-title">Article </h2>
 }
 
-<div class="page-wrapper">
-    <div class="container-fluid">
-        <div class="row">
+<div class="row">
+    <div class="col-12">
 
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Articles </h4>
+        <div class="card shadow">
+            <div class="card-body">
+                <p>
+                    <a asp-action="Create" asp-controller="Article">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-plus-fill" viewBox="0 0 16 16">
+                            <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
+                        </svg>
 
-                    </div>
-                    <p>
-                        <a asp-action="Create" asp-controller="Article">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-plus-fill" viewBox="0 0 16 16">
-                                <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
-                            </svg>
+                        Add Article
+                    </a>
+                </p>
 
-                            Add Article
-                        </a>
-                    </p>
-
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col"> Created Role </th>
+                                <th scope="col"> Title </th>
+                                <th scope="col"> Description </th>
+                                <th scope="col"> CreatedDate </th>
+                                <th scope="col"> UpdatedDate  </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col"> Created Role </th>
-                                    <th scope="col"> Title </th>
-                                    <th scope="col"> Description </th>
-                                    <th scope="col"> CreatedDate </th>
-                                    <th scope="col"> UpdatedDate  </th>
-                                    <th></th>
+                                    <td> @item.Id </td>
+                                    <td>
+                                        @if (@item.AuthorId == 1)
+                                        {
+                                            <span>Admin</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Member</span>
+                                        }
+
+                                    </td>
+                                    <td> @item.Title  </td>
+                                    <td> @item.Description </td>
+                                    <td> @item.CreatedDate </td>
+                                    <td> @item.UpdatedDate </td>
+                                    <td>
+                                        @Html.ActionLink("Update", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"}) 
+                                        @Html.ActionLink("Details", "Details", new { item.Id }, new{@class="btn btn-primary mdi mdi-format-list-bulleted"}) 
+                                        @Html.ActionLink("Delete", "Delete", new { item.Id }, new{@class="btn btn-danger mdi mdi-delete"} )
+
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td> @item.Id </td>
-                                        <td>
-                                            @if (@item.AuthorId == 1)
-                                            {
-                                                <span>Admin</span>
-                                            }
-                                            else
-                                            {
-                                                <span>Member</span>
-                                            }
-
-                                        </td>
-                                        <td> @item.Title  </td>
-                                        <td> @item.Description </td>
-                                        <td> @item.CreatedDate </td>
-                                        <td> @item.UpdatedDate </td>
-                                        <td>
-                                            @Html.ActionLink("Update", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"}) |
-                                            @Html.ActionLink("Details", "Details", new { item.Id }, new{@class="btn btn-primary mdi mdi-format-list-bulleted"}) |
-                                            @Html.ActionLink("Delete", "Delete", new { item.Id }, new{@class="btn btn-danger mdi mdi-delete"} )
-
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+                            }
+                        </tbody>
+                    </table>
                 </div>
-            </div>
+            </div> 
+
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
 
         </div>
+
     </div>
 </div>
+

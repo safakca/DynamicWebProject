@@ -3,7 +3,6 @@ using EntityLayer.Concrete;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using PresentationLayer.Models;
@@ -19,11 +18,10 @@ public class AccountController : Controller
 {
     #region Ctor
     private readonly IHttpClientFactory _httpClientFactory;
-    private readonly IRepository<AppUser> _repository;
-    public AccountController(IHttpClientFactory httpClientFactory, IRepository<AppUser> repository)
+    //private readonly IRepository<AppUser> _repository;
+    public AccountController(IHttpClientFactory httpClientFactory)
     {
         _httpClientFactory = httpClientFactory;
-        _repository = repository;
     }
     #endregion
 
@@ -87,7 +85,7 @@ public class AccountController : Controller
     #region Logout
     public IActionResult Logout()
     {
-        ModelState.Clear(); 
+        ModelState.Clear();
         return RedirectToAction("Login");
     }
     #endregion
@@ -108,17 +106,19 @@ public class AccountController : Controller
         {
             var client = _httpClientFactory.CreateClient();
             var content = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, "application/json");
+
             model.MailCode = new Random().Next(10000, 999999).ToString();
 
             if (model.Password == model.ConfirmPassword)
             {
-                
+
                 var response = await client.PostAsync("http://localhost:5097/api/Auth/Register", content);
-            
+
                 if (response.IsSuccessStatusCode)
                 {
-                    //SendEmail(model.Email, model.MailCode);
-                    return RedirectToAction("Login", "Account");
+                    SendEmail(model.Email, model.MailCode);
+                    //return RedirectToAction("Login", "Account");
+                    return RedirectToAction("EmailConfirmed", "Register");
                 }
                 else
                 {
@@ -136,12 +136,36 @@ public class AccountController : Controller
 
     #endregion
 
+
+    [HttpGet]
+    public IActionResult EmailConfirmed()
+    {
+        return View();
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> EmailConfirmed(AppUser appUser)
+    {
+        //var user = await _repository.GetByFilterAsync(x => x.Email == appUser.Email);
+
+        //if (user.MailCode == appUser.MailCode)
+        //{
+        //    user.EmailConfirmed = true;
+
+        //    var result = await _repository.UpdateAsync(user);
+        //    return RedirectToAction("Index", "Login");
+        //}
+        return View();
+    }
+
+
     #region SendMail
     public void SendEmail(string email, string emailcode)
     {
         MimeMessage mimeMessage = new MimeMessage();
 
-        MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "safakcatest@gmail.com");
+        MailboxAddress mailboxAddressFrom = new MailboxAddress("Member", "safakcatest@gmail.com");
         mimeMessage.From.Add(mailboxAddressFrom);
 
         MailboxAddress mailboxAddressTo = new MailboxAddress("User", email);
@@ -154,18 +178,18 @@ public class AccountController : Controller
         mimeMessage.Subject = "Register Form";
 
         SmtpClient smtp = new SmtpClient();
-        smtp.Connect("smtp.gmail.com", 587, false);
+        smtp.Connect("smtp.gmail.com", 587, true);
         smtp.Authenticate("safakcatest@gmail.com", "testSifre123**");
         smtp.Send(mimeMessage);
         smtp.Disconnect(true);
     }
 
     #endregion
-   
+
     #region AccessDenied
     public IActionResult AccessDenied()
     {
         return View();
-    } 
+    }
     #endregion
 }

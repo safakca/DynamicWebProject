@@ -1,32 +1,37 @@
-﻿using BusinessLayer.Features.CQRS.Commands.Users;
-using BusinessLayer.Repositories;
-using EntityLayer.Concrete;
-using EntityLayer.Enums;
+﻿using BusinessLayer.Features.CQRS.Commands.Users; 
+using EntityLayer.Concrete; 
 using MediatR;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLayer.Features.CQRS.Handlers.Users;
 public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommandRequest>
 {
-    private readonly IRepository<AppUser> _repository;
+    private readonly UserManager<AppUser> _userManager;
 
-    public RegisterUserCommandHandler(IRepository<AppUser> repository) => _repository = repository;
+    public RegisterUserCommandHandler(UserManager<AppUser> userManager)
+    {
+        _userManager = userManager;
+    }
 
     public async Task<Unit> Handle(RegisterUserCommandRequest request, CancellationToken cancellationToken)
     {
-        var exist = await _repository.GetAllAsync();
+        var exist = await _userManager.Users.ToListAsync();
         if (exist.Any(x => x.UserName == request.Username))
         {
             throw new Exception("Dublicate Username!");
         }
 
-        await _repository.CreateAsync(new AppUser
+        await _userManager.CreateAsync(new AppUser
         {
-            Password = request.Password,
+            Name = request.Name,
+            Surname = request.Surname,
             UserName = request.Username,
             Email = request.Email,
+            PasswordHash =request.Password,
             MailCode = new Random().Next(10000, 999999).ToString(),
-            AppRoleId = (int)RoleType.Member,
-        }) ;
+            EmailConfirmed = false, 
+        });
         return Unit.Value;
     }
 }

@@ -1,13 +1,12 @@
-﻿using EntityLayer.Common;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace EntityLayer.Concrete;
-public class AppUser : BaseEntity
+public class AppUser : IdentityUser<int>
 {
-    public string? UserName { get; set; }
-    public string? Password { get; set; }
-    public string? Email { get; set; } 
+    public string Name { get; set; }
+    public string Surname { get; set; }
+    public string? ImageURL { get; set; }
+    public string? Gender { get; set; }
     public string? MailCode { get; set; }
-    public int AppRoleId { get; set; }
-    public AppRole? AppRole { get; set; }
 }
 

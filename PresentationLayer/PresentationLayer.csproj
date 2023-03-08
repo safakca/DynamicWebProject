@@ -400,4 +400,10 @@
     <None Include="wwwroot\flexy-bootstrap-lite\src\scss\widgets\steamline.scss" />
     <None Include="wwwroot\flexy-bootstrap-lite\src\scss\widgets\widgets.scss" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Update="Views\Shared\_FormsLayout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

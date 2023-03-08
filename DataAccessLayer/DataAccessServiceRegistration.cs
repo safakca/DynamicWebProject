@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Repositories;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Repositories;
+using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +16,7 @@ public static class DataAccessServiceRegistration
         {
             opt.UseNpgsql(configuration.GetConnectionString("Local"));
         });
-        //services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+        services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 
         services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 

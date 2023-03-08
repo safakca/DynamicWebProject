@@ -1,0 +1,66 @@
+﻿@*@model PresentationLayer.Models.Users.EmailConfirmedViewModel*@
+@model EntityLayer.Concrete.AppUser
+
+@{
+    ViewData["Title"] = "EmailConfirmed";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PresentationLayer.styles.css" asp-append-version="true" />
+
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+
+            <div class="col-md-2"></div>
+
+            <div class="col-md-8 mt-5">
+                <div class="card text-right mt-5">
+                    <div class="card-header">
+                        Email Confimed Page
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <form asp-action="EmailConfirmed">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Email" class="control-label"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MailCode" class="control-label"></label>
+                                <input asp-for="MailCode" class="form-control" />
+                                <span asp-validation-for="MailCode" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Confirmed" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Can you check your Email, please ?
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2"></div>
+        </div>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>
+
