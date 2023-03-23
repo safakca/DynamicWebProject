@@ -2,74 +2,68 @@
 
 @{
     ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_FormsLayout.cshtml";
 }
- 
 
-<div class="page-wrapper">
-    <div class="container-fluid">
-        <div class="row">
+@section Title
+    {
+    <h2 class="card-title">Author </h2>
+}
 
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Author Details</h4>
-                    </div>
+<div class="row">
+    <div class="col-12">
 
-                    <div>
-                        <dl class="row">
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.Id)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.Id)
-                            </dd>
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.Name)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.Name)
-                            </dd>
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.Surname)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.Surname)
-                            </dd>
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.Age)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.Age)
-                            </dd>
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.CreatedDate)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.CreatedDate)
-                            </dd>
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.UpdatedDate)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.UpdatedDate)
-                            </dd>
-                        </dl>
-                    </div>
-                    <div>
-                        @Html.ActionLink("Update", "Update", new { Model.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"}) |
-                        <a asp-action="List" asp-controller="Author">Back to List</a>
-                    </div>
+        <div class="card shadow">
+            <div class="card-body">
+                <dl class="row">
 
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Id)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Id)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Surname)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Surname)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Age)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Age)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.CreatedDate)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UpdatedDate)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UpdatedDate)
+                    </dd>
+                </dl>
+
+                <div>
+                    @Html.ActionLink("Update", "Update", new { Model.Id }, new{@class="btn btn-warning"})
+                    <a asp-action="List" asp-controller="Author">Back to Author List</a>
                 </div>
+
             </div>
-
-        </div>
-    </div>
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            } 
+        </div> 
+    </div> 
 </div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

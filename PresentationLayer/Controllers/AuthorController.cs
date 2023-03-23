@@ -1,7 +1,6 @@
 ﻿using BusinessLayer.Repositories;
 using ClosedXML.Excel;
-using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Authorization;
+using EntityLayer.Concrete; 
 using Microsoft.AspNetCore.Mvc;
 using PresentationLayer.Models;
 using System.Text;
@@ -18,54 +17,44 @@ public class AuthorController : Controller
     #endregion
 
     #region List
-    [Authorize(Roles = "Admin, Member")]
+    //[Authorize(Roles = "Admin, Member")]
     [HttpGet]
     public async Task<IActionResult> List()
     {
-        var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
-        if (token != null)
+        var client = _httpClientFactory.CreateClient();
+
+        var response = await client.GetAsync("http://localhost:5097/api/Authors/GetAll");
+
+        if (response.IsSuccessStatusCode)
         {
-            var client = _httpClientFactory.CreateClient();
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-            var response = await client.GetAsync("http://localhost:5097/api/Authors/GetAll");
-
-            if (response.IsSuccessStatusCode)
+            var jsonData = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<List<AuthorListModel>>(jsonData, new JsonSerializerOptions
             {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<List<AuthorListModel>>(jsonData, new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                });
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
 
-                return View(result);
-            }
+            return View(result);
         }
         return View();
     }
     #endregion
 
     #region Detail
-    [Authorize(Roles = "Admin, Member")]
+    //[Authorize(Roles = "Admin, Member")]
     public async Task<IActionResult> Details(int id)
     {
-        var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
-        if (token != null)
+        var client = _httpClientFactory.CreateClient();
+        var response = await client.GetAsync($"http://localhost:5097/api/Authors/Get/{id}");
+
+        if (response.IsSuccessStatusCode)
         {
-            var client = _httpClientFactory.CreateClient();
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-            var response = await client.GetAsync($"http://localhost:5097/api/Authors/Get/{id}");
-
-            if (response.IsSuccessStatusCode)
+            var jsonData = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<AuthorListModel>(jsonData, new JsonSerializerOptions
             {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<AuthorListModel>(jsonData, new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                });
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
 
-                return View(result);
-            }
+            return View(result);
         }
         return View();
     }
@@ -73,7 +62,7 @@ public class AuthorController : Controller
     #endregion
 
     #region CreateGet
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult Create()
     {
@@ -82,99 +71,82 @@ public class AuthorController : Controller
     #endregion
 
     #region CreatePost
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> Create(CreateAuthorModel model)
     {
         if (ModelState.IsValid)
         {
-            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
-            if (token != null)
+            var client = _httpClientFactory.CreateClient();
+
+            var jsonData = JsonSerializer.Serialize(model);
+
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("http://localhost:5097/api/Authors/Create", content);
+
+            if (response.IsSuccessStatusCode)
             {
-                var client = _httpClientFactory.CreateClient();
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-
-                var jsonData = JsonSerializer.Serialize(model);
-
-                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync("http://localhost:5097/api/Authors/Create", content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("List", "Author");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Dublicate Author Name! ");
-                }
+                return RedirectToAction("List", "Author");
             }
             else
             {
-                ModelState.AddModelError("", "Token is null! ");
+                ModelState.AddModelError("", "Dublicate Author Name! ");
             }
+        }
+        else
+        {
+            ModelState.AddModelError("", "Token is null! ");
         }
         return View(model);
     }
     #endregion
 
     #region UpdateGet
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> Update(int id)
     {
-        var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
-        if (token != null)
+        var client = _httpClientFactory.CreateClient();
+
+        var response = await client.GetAsync($"http://localhost:5097/api/Authors/Get/{id}");
+
+        if (response.IsSuccessStatusCode)
         {
-            var client = _httpClientFactory.CreateClient();
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-            var response = await client.GetAsync($"http://localhost:5097/api/Authors/Get/{id}");
-
-            if (response.IsSuccessStatusCode)
+            var jsonData = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<UpdateAuthorModel>(jsonData, new JsonSerializerOptions
             {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<UpdateAuthorModel>(jsonData, new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                });
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
 
-                return View(result);
-            }
+            return View(result);
         }
-
         return RedirectToAction("List");
     }
 
     #endregion
 
     #region UpdatePost
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> Update(UpdateAuthorModel model)
     {
         if (ModelState.IsValid)
         {
-            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
-            if (token != null)
+            var client = _httpClientFactory.CreateClient();
+
+            var jsonData = JsonSerializer.Serialize(model);
+
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var response = await client.PutAsync("http://localhost:5097/api/Authors/Update", content);
+
+            if (response.IsSuccessStatusCode)
             {
-                var client = _httpClientFactory.CreateClient();
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-                var jsonData = JsonSerializer.Serialize(model);
-
-                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-
-                var response = await client.PutAsync("http://localhost:5097/api/Authors/Update", content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("List");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Happened a error");
-                }
+                return RedirectToAction("List");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Happened a error");
             }
         }
         return View(model);
@@ -183,53 +155,43 @@ public class AuthorController : Controller
     #endregion
 
     #region DeletePost   
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> DeletePost(int id)
     {
+        var client = _httpClientFactory.CreateClient();
 
-        var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
-        if (token != null)
-        {
-            var client = _httpClientFactory.CreateClient();
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        var response = await client.DeleteAsync($"http://localhost:5097/api/Authors/Delete/{id}");
 
-            var response = await client.DeleteAsync($"http://localhost:5097/api/Authors/Delete/{id}");
-        }
         return RedirectToAction("List");
     }
 
     #endregion
 
     #region DeleteGet
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
-        var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
-        if (token != null)
+        var client = _httpClientFactory.CreateClient();
+        var response = await client.GetAsync($"http://localhost:5097/api/Authors/Get/{id}");
+
+        if (response.IsSuccessStatusCode)
         {
-            var client = _httpClientFactory.CreateClient();
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-            var response = await client.GetAsync($"http://localhost:5097/api/Authors/Get/{id}");
-
-            if (response.IsSuccessStatusCode)
+            var jsonData = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<AuthorListModel>(jsonData, new JsonSerializerOptions
             {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<AuthorListModel>(jsonData, new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                });
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
 
-                return View(result);
-            }
-        }
+            return View(result);
+        } 
         return View();
     }
     #endregion
 
     #region DowloandExcel
-    [Authorize(Roles = "Admin, Member")]
+    //[Authorize(Roles = "Admin, Member")]
     public async Task<ActionResult> DownloadExcel()
     {
         var Authors = await _repository.GetAllAsync();
