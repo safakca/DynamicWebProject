@@ -44,8 +44,8 @@
                                 <th scope="col"> Name </th>
                                 <th scope="col"> Surname </th>
                                 <th scope="col"> Age </th>
-                                <th scope="col"> CreatedDate </th>
-                                <th scope="col"> UpdatedDate  </th>
+                                <th scope="col"> Created Date </th>
+                                <th scope="col"> Updated Date  </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -60,11 +60,11 @@
                                     <td> @item.CreatedDate </td>
                                     <td> @item.UpdatedDate </td>
                                     <td>
-
-                                        @Html.ActionLink("Update", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"}) |
-                                        @Html.ActionLink("Details", "Details", new { item.Id }, new{@class="btn btn-primary mdi mdi-format-list-bulleted"}) |
-                                        @Html.ActionLink("Delete", "Delete", new { item.Id }, new{@class="btn btn-danger mdi mdi-delete"} )
-
+                                        <div class="d-flex flex-nowrap gap-1 text-nowrap">
+                                            @Html.ActionLink("Update", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"})
+                                            @Html.ActionLink("Details", "Details", new { item.Id }, new{@class="btn btn-primary mdi mdi-format-list-bulleted"})
+                                            @Html.ActionLink("Delete", "Delete", new { item.Id }, new{@class="btn btn-danger mdi mdi-delete"} )
+                                        </div>
                                     </td>
                                 </tr>
                             }

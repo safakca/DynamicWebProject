@@ -29,11 +29,11 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col"> Created Role </th>
+                        @*        <th scope="col"> Created Role </th>*@
                                 <th scope="col"> Title </th>
                                 <th scope="col"> Description </th>
-                                <th scope="col"> CreatedDate </th>
-                                <th scope="col"> UpdatedDate  </th>
+                                <th scope="col"> Created Date </th>
+                                <th scope="col"> Updated Date  </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -42,7 +42,7 @@
                             {
                                 <tr>
                                     <td> @item.Id </td>
-                                    <td>
+                             @*       <td>
                                         @if (@item.AuthorId == 1)
                                         {
                                             <span>Admin</span>
@@ -52,15 +52,17 @@
                                             <span>Member</span>
                                         }
 
-                                    </td>
+                                    </td>*@
                                     <td> @item.Title  </td>
                                     <td> @item.Description </td>
                                     <td> @item.CreatedDate </td>
                                     <td> @item.UpdatedDate </td>
                                     <td>
-                                        @Html.ActionLink("Update", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"}) 
-                                        @Html.ActionLink("Details", "Details", new { item.Id }, new{@class="btn btn-primary mdi mdi-format-list-bulleted"}) 
-                                        @Html.ActionLink("Delete", "Delete", new { item.Id }, new{@class="btn btn-danger mdi mdi-delete"} )
+                                        <div class="d-flex flex-nowrap gap-1 text-nowrap">
+                                            @Html.ActionLink("Update", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"})
+                                            @Html.ActionLink("Details", "Details", new { item.Id }, new{@class="btn btn-primary mdi mdi-format-list-bulleted"})
+                                            @Html.ActionLink("Delete", "Delete", new { item.Id }, new{@class="btn btn-danger mdi mdi-delete"} )
+                                        </div> 
 
                                     </td>
                                 </tr>
