@@ -184,8 +184,8 @@ public class AccountController : Controller
         SmtpClient smtp = new SmtpClient(); 
         smtp.Connect("smtp.gmail.com", 587, false);
 
-        //google security key xx 
-        smtp.Authenticate("xx@gmail.com", "xx");
+        //google security key lfkuaggacytzbimd 
+        smtp.Authenticate("safakcatest@gmail.com", "lfkuaggacytzbimd"); 
         smtp.Send(mimeMessage);
         smtp.Disconnect(true);
     }
