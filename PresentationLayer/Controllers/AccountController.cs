@@ -1,9 +1,14 @@
 ﻿using BusinessLayer.Repositories;
+using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using EntityLayer.Concrete;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MimeKit;
 using PresentationLayer.Models;
 using PresentationLayer.Models.Users;
@@ -18,10 +23,11 @@ public class AccountController : Controller
 {
     #region Ctor
     private readonly IHttpClientFactory _httpClientFactory;
-    //private readonly IRepository<AppUser> _repository;
-    public AccountController(IHttpClientFactory httpClientFactory)
+    private readonly UserManager<AppUser> _userManager;
+    public AccountController(IHttpClientFactory httpClientFactory, UserManager<AppUser> userManager)
     {
         _httpClientFactory = httpClientFactory;
+        _userManager = userManager;
     }
     #endregion
 
@@ -84,8 +90,7 @@ public class AccountController : Controller
 
     #region Logout
     public IActionResult Logout()
-    {
-        ModelState.Clear();
+    { 
         return RedirectToAction("Login");
     }
     #endregion
@@ -107,18 +112,18 @@ public class AccountController : Controller
             var client = _httpClientFactory.CreateClient();
             var content = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, "application/json");
 
-            model.MailCode = new Random().Next(10000, 999999).ToString();
 
             if (model.Password == model.ConfirmPassword)
             {
-
                 var response = await client.PostAsync("http://localhost:5097/api/Auth/Register", content);
+
+                var x = await _userManager.Users.OrderByDescending(x => x.Id).LastAsync();
+                model.MailCode = x.MailCode;
 
                 if (response.IsSuccessStatusCode)
                 {
                     SendEmail(model.Email, model.MailCode);
-                    //return RedirectToAction("Login", "Account");
-                    return RedirectToAction("EmailConfirmed", "Register");
+                    return RedirectToAction("EmailConfirmed", "Account");
                 }
                 else
                 {
@@ -147,15 +152,14 @@ public class AccountController : Controller
     [HttpPost]
     public async Task<IActionResult> EmailConfirmed(AppUser appUser)
     {
-        //var user = await _repository.GetByFilterAsync(x => x.Email == appUser.Email);
+        var user = await _userManager.FindByEmailAsync(appUser.Email);
+        if (user.MailCode == appUser.MailCode)
+        {
+            user.EmailConfirmed = true;
 
-        //if (user.MailCode == appUser.MailCode)
-        //{
-        //    user.EmailConfirmed = true;
-
-        //    var result = await _repository.UpdateAsync(user);
-        //    return RedirectToAction("Index", "Login");
-        //}
+            var result = await _userManager.UpdateAsync(user);
+            return RedirectToAction("Login", "Account");
+        }
         return View();
     }
 
@@ -165,7 +169,7 @@ public class AccountController : Controller
     {
         MimeMessage mimeMessage = new MimeMessage();
 
-        MailboxAddress mailboxAddressFrom = new MailboxAddress("Member", "safakcatest@gmail.com");
+        MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "safakcatest@gmail.com");
         mimeMessage.From.Add(mailboxAddressFrom);
 
         MailboxAddress mailboxAddressTo = new MailboxAddress("User", email);
@@ -177,12 +181,15 @@ public class AccountController : Controller
 
         mimeMessage.Subject = "Register Form";
 
-        SmtpClient smtp = new SmtpClient();
-        smtp.Connect("smtp.gmail.com", 587, true);
-        smtp.Authenticate("safakcatest@gmail.com", "testSifre123**");
+        SmtpClient smtp = new SmtpClient(); 
+        smtp.Connect("smtp.gmail.com", 587, false);
+
+        //google security key xx 
+        smtp.Authenticate("xx@gmail.com", "xx");
         smtp.Send(mimeMessage);
         smtp.Disconnect(true);
     }
+     
 
     #endregion
 

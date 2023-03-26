@@ -36,18 +36,18 @@
                                 <input asp-for="Email" class="form-control" />
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mt-3">
                                 <label asp-for="MailCode" class="control-label"></label>
                                 <input asp-for="MailCode" class="form-control" />
                                 <span asp-validation-for="MailCode" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mt-3">
                                 <input type="submit" value="Confirmed" class="btn btn-primary" />
                             </div>
                         </form>
                     </div>
                     <div class="card-footer text-muted">
-                        Can you check your Email, please ?
+                        Can you write Email and Mail Code here, please ?  If you don't have a mail code click here 👉🏼 <a asp-action="Register" asp-controller="Account">Register</a>
                     </div>
                 </div>
             </div>

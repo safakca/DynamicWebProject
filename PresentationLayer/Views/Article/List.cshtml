@@ -29,7 +29,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                        @*        <th scope="col"> Created Role </th>*@
+                                @*        <th scope="col"> Created Role </th>*@
                                 <th scope="col"> Title </th>
                                 <th scope="col"> Description </th>
                                 <th scope="col"> Created Date </th>
@@ -42,27 +42,35 @@
                             {
                                 <tr>
                                     <td> @item.Id </td>
-                             @*       <td>
-                                        @if (@item.AuthorId == 1)
-                                        {
-                                            <span>Admin</span>
-                                        }
-                                        else
-                                        {
-                                            <span>Member</span>
-                                        }
+                                    @*       <td>
+                                @if (@item.AuthorId == 1)
+                                {
+                                <span>Admin</span>
+                                }
+                                else
+                                {
+                                <span>Member</span>
+                                }
 
-                                    </td>*@
-                                    <td> @item.Title  </td>
-                                    <td> @item.Description </td>
-                                    <td> @item.CreatedDate </td>
-                                    <td> @item.UpdatedDate </td>
+                                </td>*@
+                                    <td> @item.Title</td>
+                                    <td>@item.Description</td>
+                                    <td>
+                                        <div class="d-flex flex-nowrap grap-1 text-nowrap">
+                                            @item.CreatedDate
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-nowrap grap-1 text-nowrap">
+                                            @item.UpdatedDate
+                                        </div>
+                                    </td>
                                     <td>
                                         <div class="d-flex flex-nowrap gap-1 text-nowrap">
                                             @Html.ActionLink("Update", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"})
                                             @Html.ActionLink("Details", "Details", new { item.Id }, new{@class="btn btn-primary mdi mdi-format-list-bulleted"})
                                             @Html.ActionLink("Delete", "Delete", new { item.Id }, new{@class="btn btn-danger mdi mdi-delete"} )
-                                        </div> 
+                                        </div>
 
                                     </td>
                                 </tr>
@@ -70,7 +78,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div> 
+            </div>
 
             @{
                 await Html.RenderPartialAsync("_ValidationScriptsPartial");

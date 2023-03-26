@@ -57,8 +57,16 @@
                                     <td> @item.Name </td>
                                     <td> @item.Surname  </td>
                                     <td> @item.Age </td>
-                                    <td> @item.CreatedDate </td>
-                                    <td> @item.UpdatedDate </td>
+                                    <td>
+                                        <div class="d-flex flex-nowrap grap-1 text-nowrap">
+                                            @item.CreatedDate
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-nowrap grap-1 text-nowrap">
+                                            @item.UpdatedDate
+                                        </div>
+                                    </td>
                                     <td>
                                         <div class="d-flex flex-nowrap gap-1 text-nowrap">
                                             @Html.ActionLink("Update", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"})

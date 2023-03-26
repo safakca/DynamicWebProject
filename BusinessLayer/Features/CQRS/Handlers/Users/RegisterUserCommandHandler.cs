@@ -1,5 +1,5 @@
-﻿using BusinessLayer.Features.CQRS.Commands.Users; 
-using EntityLayer.Concrete; 
+﻿using BusinessLayer.Features.CQRS.Commands.Users;
+using EntityLayer.Concrete;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -28,9 +28,9 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommandReq
             Surname = request.Surname,
             UserName = request.Username,
             Email = request.Email,
-            PasswordHash =request.Password,
             MailCode = new Random().Next(10000, 999999).ToString(),
-            EmailConfirmed = false, 
+            PasswordHash = request.Password,
+            EmailConfirmed = false,
         });
         return Unit.Value;
     }

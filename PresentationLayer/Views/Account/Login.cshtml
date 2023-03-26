@@ -41,17 +41,17 @@
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                             <div class="row">
-                                <div class="form-group mt-3 col-md-6">
-                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                <div class="form-group mt-3 col-md-10">
+                                    <input type="submit" value="Login" class="btn btn-primary" />
                                 </div>
-                                <div class="form-group mt-3 col-md-6">
+                                <div class="form-group mt-3 col-md-2">
                                      <a asp-action="ResetPassword" asp-controller="Account">Forget Password</a>
                                 </div>
                             </div> 
                         </form>
                     </div>
                     <div class="card-footer text-muted">
-                        If you don't have an account click here 👉🏼 <a asp-action="Register" asp-controller="Account">Register</a>
+                        If you don't have an account or want to create new one click here 👉🏼 <a asp-action="Register" asp-controller="Account">Register</a>
                     </div>
                 </div>
             </div>
