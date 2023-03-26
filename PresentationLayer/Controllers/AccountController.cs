@@ -169,7 +169,7 @@ public class AccountController : Controller
     {
         MimeMessage mimeMessage = new MimeMessage();
 
-        MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "safakcatest@gmail.com");
+        MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "xx@gmail.com");
         mimeMessage.From.Add(mailboxAddressFrom);
 
         MailboxAddress mailboxAddressTo = new MailboxAddress("User", email);
@@ -184,8 +184,8 @@ public class AccountController : Controller
         SmtpClient smtp = new SmtpClient(); 
         smtp.Connect("smtp.gmail.com", 587, false);
 
-        //google security key lfkuaggacytzbimd 
-        smtp.Authenticate("safakcatest@gmail.com", "lfkuaggacytzbimd"); 
+        //google security key xx 
+        smtp.Authenticate("xx@gmail.com", "xx"); 
         smtp.Send(mimeMessage);
         smtp.Disconnect(true);
     }
