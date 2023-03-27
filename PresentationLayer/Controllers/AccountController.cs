@@ -5,6 +5,7 @@ using DocumentFormat.OpenXml.Office2010.Excel;
 using EntityLayer.Concrete;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -89,8 +90,9 @@ public class AccountController : Controller
     #endregion
 
     #region Logout
-    public IActionResult Logout()
-    { 
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         return RedirectToAction("Login");
     }
     #endregion
@@ -117,7 +119,7 @@ public class AccountController : Controller
             {
                 var response = await client.PostAsync("http://localhost:5097/api/Auth/Register", content);
 
-                var x = await _userManager.Users.OrderByDescending(x => x.Id).LastAsync();
+                var x = await _userManager.Users.OrderBy(x => x.Id).LastAsync();
                 model.MailCode = x.MailCode;
 
                 if (response.IsSuccessStatusCode)
@@ -141,6 +143,7 @@ public class AccountController : Controller
 
     #endregion
 
+    #region EmailConfirmed
 
     [HttpGet]
     public IActionResult EmailConfirmed()
@@ -161,7 +164,8 @@ public class AccountController : Controller
             return RedirectToAction("Login", "Account");
         }
         return View();
-    }
+    } 
+    #endregion
 
 
     #region SendMail
@@ -169,7 +173,7 @@ public class AccountController : Controller
     {
         MimeMessage mimeMessage = new MimeMessage();
 
-        MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "xx@gmail.com");
+        MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "safakcatest@gmail.com");
         mimeMessage.From.Add(mailboxAddressFrom);
 
         MailboxAddress mailboxAddressTo = new MailboxAddress("User", email);
@@ -184,8 +188,8 @@ public class AccountController : Controller
         SmtpClient smtp = new SmtpClient(); 
         smtp.Connect("smtp.gmail.com", 587, false);
 
-        //google security key xx 
-        smtp.Authenticate("xx@gmail.com", "xx"); 
+        //google security key lfkuaggacytzbimd 
+        smtp.Authenticate("safakcatest@gmail.com", "lfkuaggacytzbimd"); 
         smtp.Send(mimeMessage);
         smtp.Disconnect(true);
     }
@@ -193,10 +197,46 @@ public class AccountController : Controller
 
     #endregion
 
+    
     #region AccessDenied
     public IActionResult AccessDenied()
     {
         return View();
     }
     #endregion
+
+
+    #region ResetPassword
+    
+    [HttpGet]
+    public IActionResult ResetPassword()
+    {
+        return View();
+    }
+
+     
+    [HttpPost]
+    public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+    {
+        var user = await _userManager.FindByNameAsync(User.Identity.Name);
+        var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+        if (model.NewPassword == model.ConfirmNewPassword)
+        {
+            var updateUser = await _userManager.ResetPasswordAsync(user, token, model.NewPassword);
+            if (updateUser.Succeeded)
+            { 
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
+                await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme); 
+                return RedirectToAction("Login", "Account"); 
+            }
+        }
+        else
+        {
+            ModelState.AddModelError("", "An error occured.");
+        }
+        return RedirectToAction("Login", "Account");
+    }
+
+    #endregion
+
 }
