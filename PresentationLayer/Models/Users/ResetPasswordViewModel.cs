@@ -4,6 +4,9 @@ namespace PresentationLayer.Models.Users;
 public class ResetPasswordViewModel
 {
     [Required(ErrorMessage = "Type existing password")]
+    public string Email { get; set; }
+
+    [Required(ErrorMessage = "Type existing password")]
     public string CurrentPassword { get; set; }
 
 

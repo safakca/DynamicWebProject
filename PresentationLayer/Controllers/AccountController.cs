@@ -164,10 +164,9 @@ public class AccountController : Controller
             return RedirectToAction("Login", "Account");
         }
         return View();
-    } 
+    }
     #endregion
-
-
+     
     #region SendMail
     public void SendEmail(string email, string emailcode)
     {
@@ -185,58 +184,53 @@ public class AccountController : Controller
 
         mimeMessage.Subject = "Register Form";
 
-        SmtpClient smtp = new SmtpClient(); 
+        SmtpClient smtp = new SmtpClient();
         smtp.Connect("smtp.gmail.com", 587, false);
 
         //google security key lfkuaggacytzbimd 
-        smtp.Authenticate("safakcatest@gmail.com", "lfkuaggacytzbimd"); 
+        smtp.Authenticate("safakcatest@gmail.com", "lfkuaggacytzbimd");
         smtp.Send(mimeMessage);
         smtp.Disconnect(true);
     }
-     
+
 
     #endregion
-
-    
-    #region AccessDenied
-    public IActionResult AccessDenied()
-    {
-        return View();
-    }
-    #endregion
-
 
     #region ResetPassword
-    
+
     [HttpGet]
     public IActionResult ResetPassword()
     {
         return View();
     }
 
-     
+
     [HttpPost]
     public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
     {
-        var user = await _userManager.FindByNameAsync(User.Identity.Name);
-        var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-        if (model.NewPassword == model.ConfirmNewPassword)
+        var existUser = await _userManager.FindByEmailAsync(model.Email);
+        if (existUser != null && model.CurrentPassword != existUser.PasswordHash)
         {
-            var updateUser = await _userManager.ResetPasswordAsync(user, token, model.NewPassword);
-            if (updateUser.Succeeded)
-            { 
-                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
-                await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme); 
-                return RedirectToAction("Login", "Account"); 
-            }
+            existUser.PasswordHash = model.NewPassword;
+            await _userManager.UpdateAsync(existUser);
+            ModelState.AddModelError("", "Successful password update");
         }
         else
         {
-            ModelState.AddModelError("", "An error occured.");
+            ModelState.AddModelError("", "Current password is correct");
         }
         return RedirectToAction("Login", "Account");
     }
 
     #endregion
 
+    #region AccessDenied
+    public IActionResult AccessDenied()
+    {
+        return View();
+    }
+    #endregion
+     
 }
+
+ 
