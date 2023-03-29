@@ -1,0 +1,57 @@
+﻿@using EntityLayer.Concrete
+
+@{
+    List<Article> article = ViewBag.Article;
+}
+
+<div class="card">
+    <div class="card-body">
+ 
+        <div class="d-md-flex">
+            <div>
+                <h4 class="card-title">Articles</h4>
+                <h5 class="card-subtitle">Last added article list, you can list by daily, weekly, montly, yearly</h5>
+            </div>
+            <div class="ms-auto">
+                <div class="dl">
+                    <select class="form-select shadow-none">
+                        <option value="0" selected>Monthly</option>
+                        <option value="1">Daily</option>
+                        <option value="2">Weekly</option>
+                        <option value="3">Yearly</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="table-responsive">
+            <table class="table mb-0 table-hover align-middle text-nowrap">
+                <thead>
+                    <tr>
+                        <th class="border-top-0">Title</th>
+                        <th class="border-top-0">Description</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(article != null){
+                    foreach (var item in article)
+                    { 
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+
+                                    <div class="">
+                                        <h4 class="m-b-0 font-16">@item.Title</h4>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>@item.Description</td>
+
+                        </tr>
+                        }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

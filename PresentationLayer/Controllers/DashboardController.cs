@@ -1,18 +1,25 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using BusinessLayer.Repositories;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Newtonsoft.Json.Linq;
 
 namespace PresentationLayer.Controllers;
 public class DashboardController : Controller
 {
-    public IActionResult Index()
+    private readonly IRepository<Article> _articleRepository;
+
+    public DashboardController(IRepository<Article> articleRepository)
     {
-        return View();
+        _articleRepository = articleRepository;
     }
 
-
-
-    public async Task<IActionResult> Weather()
+    public async Task<IActionResult> Index()
     {
+        List<Article> articleList = await _articleRepository.GetAllAsync();
+        ViewBag.Article = articleList;
+
         var client = new HttpClient();
         var request = new HttpRequestMessage
         {
@@ -27,11 +34,13 @@ public class DashboardController : Controller
         using (var response = await client.SendAsync(request))
         {
             response.EnsureSuccessStatusCode();
-            var body = await response.Content.ReadAsStringAsync();
-        }
+            string body = await response.Content.ReadAsStringAsync();
+            JObject valuePairs = JObject.Parse(body);   
+            ViewBag.Weater = valuePairs;
+        } 
 
         return View();
-    }
-
+    } 
+     
 
 }
