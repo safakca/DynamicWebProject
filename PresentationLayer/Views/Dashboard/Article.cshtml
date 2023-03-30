@@ -34,9 +34,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if(article != null){
-                    foreach (var item in article)
-                    { 
+
+                    @if(article != null)
+                     {
+                        foreach (var item in article)
+                        { 
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center">
@@ -49,7 +51,9 @@
                             <td>@item.Description</td>
 
                         </tr>
-                        }}
+                        }
+                     }
+
                 </tbody>
             </table>
         </div>

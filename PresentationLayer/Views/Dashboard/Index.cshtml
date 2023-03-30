@@ -1,9 +1,7 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 
 <div class="page-breadcrumb">
     <div class="row align-items-center">
@@ -24,20 +22,14 @@
         </div>
     </div>
 </div>
-<!-- ============================================================== -->
-<!-- End Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- Container fluid  -->
-<!-- ============================================================== -->
+
 <div class="container-fluid">
     <!-- ============================================================== -->
     <!-- Sales chart -->
     <!-- ============================================================== -->
     <div class="row">
         <div class="col-lg-8">
-            @await Html.PartialAsync("Article")
-            @*@await Component.InvokeAsync("_AuthorPartial")*@
+            @await Html.PartialAsync("Article") 
 
         </div>
         <div class="col-lg-4">

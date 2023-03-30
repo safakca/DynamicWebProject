@@ -1,28 +1,34 @@
-﻿ 
+﻿@using PresentationLayer.Models.Weather;
+
 @{
-    var weather = (Newtonsoft.Json.Linq.JObject)ViewBag.Weather;
+    //var weather = (Newtonsoft.Json.Linq.JObject)ViewBag.Weather;
+    WeatherViewModel weather = ViewBag.Weather;
 }
-   <div class="card">
+
+
+@if (weather != null)
+{
+    <div class="card">
         <div class="card-body">
             <h4 class="card-title">Temp Guide</h4>
             <div class="d-flex align-items-center flex-row m-t-30">
                 <div class="display-5 text-info">
                     <i class="wi wi-day-showers"></i>
-                    <span>73<sup>°</sup></span>
+                    <span>@weather.temp<sup>°</sup></span>
                 </div>
                 <div class="m-l-10">
-                    <h3 class="m-b-0">Saturday</h3><small>Ahmedabad, India</small>
+                    <h3 class="m-b-0">Saturday</h3><small>Istanbul, TURKEY</small>
                 </div>
             </div>
             <table class="table no-border mini-table m-t-20">
                 <tbody>
                     <tr>
                         <td class="text-muted">Wind</td>
-                        <td class="font-medium">ESE 17 mph</td>
+                        <td class="font-medium">ESE @weather.wind_speed mph</td>
                     </tr>
                     <tr>
                         <td class="text-muted">Humidity</td>
-                        <td class="font-medium">83%</td>
+                        <td class="font-medium">@weather.humidity %</td>
                     </tr>
                     <tr>
                         <td class="text-muted">Pressure</td>
@@ -30,7 +36,7 @@
                     </tr>
                     <tr>
                         <td class="text-muted">Cloud Cover</td>
-                        <td class="font-medium">78%</td>
+                        <td class="font-medium">@weather.cloud_pct %</td>
                     </tr>
                 </tbody>
             </table>
@@ -38,24 +44,26 @@
                 <li class="col-3">
                     <h4 class="text-info"><i class="wi wi-day-sunny"></i></h4>
                     <span class="d-block text-muted">09:30</span>
-                    <h3 class="m-t-5">70<sup>°</sup></h3>
+                    <h3 class="m-t-5">@weather.min_temp<sup>°</sup></h3>
                 </li>
                 <li class="col-3">
                     <h4 class="text-info"><i class="wi wi-day-cloudy"></i></h4>
                     <span class="d-block text-muted">11:30</span>
-                    <h3 class="m-t-5">72<sup>°</sup></h3>
+                    <h3 class="m-t-5">@weather.max_temp<sup>°</sup></h3>
                 </li>
                 <li class="col-3">
                     <h4 class="text-info"><i class="wi wi-day-hail"></i></h4>
                     <span class="d-block text-muted">13:30</span>
-                    <h3 class="m-t-5">75<sup>°</sup></h3>
+                    <h3 class="m-t-5">@weather.max_temp<sup>°</sup></h3>
                 </li>
                 <li class="col-3">
                     <h4 class="text-info"><i class="wi wi-day-sprinkle"></i></h4>
                     <span class="d-block text-muted">15:30</span>
-                    <h3 class="m-t-5">76<sup>°</sup></h3>
+                    <h3 class="m-t-5">@weather.min_temp<sup>°</sup></h3>
                 </li>
             </ul>
         </div>
     </div>
- 
+     
+}
+
