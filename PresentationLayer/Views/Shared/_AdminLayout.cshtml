@@ -13,9 +13,8 @@
           content="Flexy Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
     <title>Flexy Admin Lite Template by WrapPixel</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/Flexy-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="~/flexy-bootstrap-lite/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/flexy-bootstrap-lite/assets/images/favicon.ico">
     <!-- Custom CSS -->
     <link href="~/flexy-bootstrap-lite/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="~/flexy-bootstrap-lite/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
@@ -58,18 +57,18 @@
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="~/flexy-bootstrap-lite/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="~/flexy-bootstrap-lite/assets/images/fakedium-logo.png" alt="homepage" class="dark-logo" width="160" height="70" />
                             <!-- Light Logo icon -->
-                            <img src="~/flexy-bootstrap-lite/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                            <img src="~/flexy-bootstrap-lite/assets/images/fakedium-logo.png" alt="homepage" class="light-logo" width="160" height="70"  />
                         </b>
                         <!--End Logo icon -->
-                        <!-- Logo text -->
+                      @*  <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
                             <img src="~/flexy-bootstrap-lite/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->
                             <img src="~/flexy-bootstrap-lite/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-                        </span>
+                        </span>*@
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -107,16 +106,24 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="~/flexy-bootstrap-lite/assets/images/users/profile.jpg" alt="user" class="rounded-circle" width="31">
+                                <img src="~/flexy-bootstrap-lite/assets/images/users/woman1.jpg" alt="user" class="rounded-circle" width="31">
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" asp-action="Login" asp-controller="Account">
-                                    <i class="ti-user m-r-5 m-l-5"></i>
+                                    <i class="mdi mdi-account m-r-5 m-l-5"></i>
                                     Login
                                 </a>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="ti-wallet m-r-5 m-l-5"></i>
-                                    My Balance
+                                <a class="dropdown-item" asp-action="Login" asp-controller="Account">
+                                    <i class="mdi mdi-logout m-r-5 m-l-5"></i>
+                                    Logout
+                                </a>
+                                <a class="dropdown-item" asp-action="Register" asp-controller="Account">
+                                    <i class="mdi mdi-account-plus m-l-5"></i>
+                                    Register
+                                </a>
+                                <a class="dropdown-item" asp-action="List" asp-controller="Setting">
+                                    <i class="ti-settings m-r-5 m-l-5"></i>
+                                    Settings
                                 </a>
                             </ul>
                         </li>
@@ -159,11 +166,17 @@
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                               asp-action="List" asp-controller="Todo" aria-expanded="false">
+                                <i class="mdi mdi-playlist-check"></i><span class="hide-menu">Todos</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                href="pages-profile.html" aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i><span class="hide-menu">Profile</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                     @*   <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                href="table-basic.html" aria-expanded="false">
                                 <i class="mdi mdi-border-all"></i><span class="hide-menu">Table</span>
@@ -186,11 +199,11 @@
                                href="error-404.html" aria-expanded="false">
                                 <i class="mdi mdi-alert-outline"></i><span class="hide-menu">404</span>
                             </a>
-                        </li>
-                        <li class="text-center p-40 upgrade-btn">
+                        </li>*@
+                       @* <li class="text-center p-40 upgrade-btn">
                             <a href="https://www.wrappixel.com/templates/flexy-bootstrap-admin-template/"
                                class="btn d-block w-100 btn-danger text-white" target="_blank">Upgrade to Pro</a>
-                        </li>
+                        </li>*@
                     </ul>
 
                 </nav>

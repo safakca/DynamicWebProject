@@ -7,7 +7,21 @@
 
 @section Title
     {
-    <h2 class="card-title">Author </h2>
+
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 d-flex align-items-center">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard"><i class="mdi mdi-home-outline fs-4"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Author</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-6">
+            </div>
+        </div>
+    </div>
 }
 
 <div class="row">
@@ -55,7 +69,7 @@
 
                 <form asp-action="DeletePost">
                     <input type="hidden" asp-for="Id" />
-                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    <input type="submit" value="Delete" class="btn btn-danger" />
                     <a asp-action="List" asp-controller="Author">Back to Author List</a>
                 </form>
 

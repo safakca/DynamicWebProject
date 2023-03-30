@@ -25,9 +25,6 @@
     <None Remove="Views\Todo\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="wwwroot\Images\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="wwwroot\flexy-bootstrap-lite\src\scss\prepros.config" />
     <None Include="wwwroot\flexy-bootstrap-lite\assets\images\custom-select.png" />
     <None Include="wwwroot\flexy-bootstrap-lite\assets\images\favicon.png" />
@@ -54,7 +51,6 @@
     <None Include="wwwroot\flexy-bootstrap-lite\assets\images\users\d3.jpg" />
     <None Include="wwwroot\flexy-bootstrap-lite\assets\images\users\d4.jpg" />
     <None Include="wwwroot\flexy-bootstrap-lite\assets\images\users\d5.jpg" />
-    <None Include="wwwroot\flexy-bootstrap-lite\assets\images\users\profile.png" />
     <None Include="wwwroot\flexy-bootstrap-lite\assets\libs\.DS_Store" />
     <None Include="wwwroot\flexy-bootstrap-lite\assets\libs\bootstrap\dist\.DS_Store" />
     <None Include="wwwroot\flexy-bootstrap-lite\assets\libs\bootstrap\dist\css\bootstrap-grid.css" />

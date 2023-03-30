@@ -17,7 +17,7 @@ public class TodoController : Controller
     #endregion
 
     #region List
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> List()
     {
         var result = await _repository.GetAllAsync();
@@ -26,7 +26,7 @@ public class TodoController : Controller
     #endregion
 
     #region Create
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public IActionResult Create()
     {
         return View();
@@ -34,7 +34,7 @@ public class TodoController : Controller
 
 
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create(Todo todo)
     {
         await _repository.CreateAsync(todo);
@@ -43,7 +43,7 @@ public class TodoController : Controller
     #endregion
 
     #region Update
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> Update(int id)
     {
         var result = await _repository.GetAsync(id);
@@ -51,7 +51,7 @@ public class TodoController : Controller
     }
 
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> Update(Todo todo)
     {
         await _repository.UpdateAsync(todo);
@@ -61,7 +61,7 @@ public class TodoController : Controller
     #endregion
 
     #region Delete
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id)
     {
         var result = await _repository.GetAsync(id);
@@ -69,7 +69,7 @@ public class TodoController : Controller
     }
 
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(Todo todo)
     {
         await _repository.RemoveAsync(todo);

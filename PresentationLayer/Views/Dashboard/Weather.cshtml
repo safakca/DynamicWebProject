@@ -1,23 +1,21 @@
 ﻿@using PresentationLayer.Models.Weather;
 
-@{
-    //var weather = (Newtonsoft.Json.Linq.JObject)ViewBag.Weather;
+@{ 
     WeatherViewModel weather = ViewBag.Weather;
-}
-
+} 
 
 @if (weather != null)
 {
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Temp Guide</h4>
+            <h4 class="card-title">Current Weather</h4>
             <div class="d-flex align-items-center flex-row m-t-30">
                 <div class="display-5 text-info">
                     <i class="wi wi-day-showers"></i>
                     <span>@weather.temp<sup>°</sup></span>
                 </div>
                 <div class="m-l-10">
-                    <h3 class="m-b-0">Saturday</h3><small>Istanbul, TURKEY</small>
+                    <h3 class="m-b-0">Daily</h3><small>Istanbul, TURKEY</small>
                 </div>
             </div>
             <table class="table no-border mini-table m-t-20">

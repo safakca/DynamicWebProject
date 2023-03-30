@@ -51,6 +51,7 @@ public class AccountController : Controller
             var response = await client.PostAsync("http://localhost:5097/api/Auth/Login", content);
             if (response.IsSuccessStatusCode)
             {
+
                 var jsonData = await response.Content.ReadAsStringAsync();
                 var tokenModel = JsonSerializer.Deserialize<JwtTokenResponseModel>(jsonData, new JsonSerializerOptions
                 {
@@ -75,10 +76,12 @@ public class AccountController : Controller
                         ExpiresUtc = tokenModel.ExpireDate,
                         IsPersistent = true
                     };
+
                     await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
 
-                    return RedirectToAction("List", "Article");
+                    return RedirectToAction("Index", "Dashboard");
                 }
+
             }
             else
             {
@@ -166,7 +169,7 @@ public class AccountController : Controller
         return View();
     }
     #endregion
-     
+
     #region SendMail
     public void SendEmail(string email, string emailcode)
     {
@@ -230,7 +233,6 @@ public class AccountController : Controller
         return View();
     }
     #endregion
-     
+
 }
 
- 

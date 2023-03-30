@@ -2,47 +2,64 @@
 
 @{
     ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_FormsLayout.cshtml";
 }
 
-<h1>Create</h1>
+@section Title
+    {
+      <div class="page-breadcrumb">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 d-flex align-items-center">
+                            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard"><i class="mdi mdi-home-outline fs-4"></i></a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Todo</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-6">
+                </div>
+            </div>
+        </div>
+}
 
-<h4>Todo</h4>
-<hr />
+
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+    <div class="col-12">
+
+        <div class="card shadow">
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Status" class="control-label"></label>
+                        <input asp-for="Status" class="form-control" />
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <a asp-action="List" asp-controller="Todo">Back to Todo List</a>
+                    </div>
+                </form>
+
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group"> 
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-             
-            <div class="form-group mt-2">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            } 
+        </div>
+
     </div>
 </div>
-
-<div>
-    <a asp-action="List" asp-controller="Todo">Back to List</a>
-</div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

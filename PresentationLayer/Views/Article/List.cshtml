@@ -6,8 +6,23 @@
 }
 @section Title
     {
-    <h2 class="card-title">Article </h2>
+
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 d-flex align-items-center">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard"><i class="mdi mdi-home-outline fs-4"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Article</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-6">
+            </div>
+        </div>
+    </div>
 }
+
 
 <div class="row">
     <div class="col-12">
@@ -15,7 +30,8 @@
         <div class="card shadow">
             <div class="card-body">
                 <p>
-                    <a asp-action="Create" asp-controller="Article">
+                    <a asp-action="Create" asp-controller="Article" class="btn btn-outline-primary">
+                        @*<i class="bi bi-1-circle-fill"></i>*@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-plus-fill" viewBox="0 0 16 16">
                             <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
                         </svg>

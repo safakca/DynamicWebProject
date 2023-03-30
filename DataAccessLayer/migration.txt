@@ -4,18 +4,13 @@ Dowloand DotnetCLI Tool
 dotnet tool install --global dotnet-ef
 dotnet tool install --global dotnet-ef --version 6.* 
 
-STEP-1) s
-**** in WebAPI layer
-dotnet ef migrations add InitialCreate --project ../DataAccessLayer --context Context
+STEP-1) 
 **** ROOT da yazılacak
 dotnet ef migrations add InitialCreate --startup-project ../WebAPI --project ../DataAccessLayer -c Context
 dotnet ef migrations add "InitialCreate" --startup-project DynamicWebProject.WebAPI --project DynamicWebProject.DataAccessLayer --output-dir "Migrations"
 
 
-STEP-2)  
-**** in WebAPI layer
-dotnet ef database update --project ../DataAccessLayer --context Context
-
+STEP-2)    
 **** ROOT da yazılacak
 dotnet ef database update --startup-project ../WebAPI --project ../DataAccessLayer -c Context
 

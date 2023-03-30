@@ -2,56 +2,97 @@
 
 @{
     ViewData["Title"] = "List";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_FormsLayout.cshtml";
 }
 
-<h1>List</h1>
+@section Title
+    {
+      <div class="page-breadcrumb">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 d-flex align-items-center">
+                            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard"><i class="mdi mdi-home-outline fs-4"></i></a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Todo</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-6">
+                </div>
+            </div>
+        </div>
+}
 
-<p>
-    <a asp-action="Create" asp-controller="Todo">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                #
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
+<div class="row">
+    <div class="col-12">
 
-                <td> 
-                    @Html.ActionLink("Edit", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"}) | 
-                    @Html.ActionLink("Delete", "Delete", new { item.Id }, new{@class="btn btn-danger mdi mdi-delete"} )
+        <div class="card shadow">
+            <div class="card-body">
+                <p>
+                    <a asp-action="Create" asp-controller="Todo">Create New</a>
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col"> Title </th>
+                                <th scope="col"> Description </th>
+                                <th scope="col"> Status </th>
+                                <th scope="col"> Created Date </th>
+                                <th scope="col"> Updated Date </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td> @item.Id </td>
+                                    <td>
+                                        <div class="d-flex flex-nowrap grap-1 text-nowrap">
+                                            @item.Title
 
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-nowrap grap-1 text-nowrap">
+                                            @item.Description
+                                        </div>
+                                    </td>
+                                    <td>
+                                       @item.Status
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-nowrap grap-1 text-nowrap">
+                                            @item.CreatedDate
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-nowrap grap-1 text-nowrap">
+                                            @item.UpdatedDate
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="d-flex flex-nowrap gap-1 text-nowrap">
+                                            @Html.ActionLink("Update", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"})
+                                            @Html.ActionLink("Delete", "Delete", new { item.Id }, new{@class="btn btn-danger mdi mdi-delete"} )
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
+        </div>
+    </div>
+
+</div> 
