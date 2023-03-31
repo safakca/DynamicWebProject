@@ -1,4 +1,6 @@
-using Microsoft.AspNetCore.Authorization;
+using BusinessLayer.Repositories;
+using ClosedXML.Excel;
+using EntityLayer.Concrete; 
 using Microsoft.AspNetCore.Mvc;
 using PresentationLayer.Models;
 using System.Text;
@@ -10,7 +12,14 @@ public class ArticleController : Controller
 {
     #region Ctor
     private readonly IHttpClientFactory _httpClientFactory;
-    public ArticleController(IHttpClientFactory httpClientFactory) => _httpClientFactory = httpClientFactory;
+    private readonly IRepository<Article> _repository;
+
+    public ArticleController(IHttpClientFactory httpClientFactory, IRepository<Article> repository)
+    {
+        _httpClientFactory = httpClientFactory;
+        _repository = repository;
+    }
+
     #endregion
 
     #region List
@@ -192,5 +201,36 @@ public class ArticleController : Controller
         return View();
     }
     #endregion
+     
+    #region DowloandExcel 
+    public async Task<ActionResult> DownloadExcel()
+    {
+        var articles = await _repository.GetAllAsync();
+        using (var workbook = new XLWorkbook())
+        {
+            var worksheet = workbook.Worksheets.Add("Articles");
+            var currentRow = 1;
+            worksheet.Cell(currentRow, 1).Value = "Title";
+            worksheet.Cell(currentRow, 2).Value = "Description"; 
+            worksheet.Cell(currentRow, 3).Value = "CreatedDate";
+            worksheet.Cell(currentRow, 4).Value = "UpdatedDate";
 
+            foreach (var item in articles)
+            {
+                currentRow++;
+                worksheet.Cell(currentRow, 1).Value += item.Title;
+                worksheet.Cell(currentRow, 2).Value += item.Description; 
+                worksheet.Cell(currentRow, 3).Value += item.CreatedDate.ToString();
+                worksheet.Cell(currentRow, 4).Value += item.UpdatedDate.ToString();
+            }
+
+            using (var stream = new MemoryStream())
+            {
+                workbook.SaveAs(stream);
+                var content = stream.ToArray();
+                return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Article.xlsx");
+            }
+        }
+    }
+    #endregion
 }

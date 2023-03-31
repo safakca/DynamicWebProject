@@ -4,23 +4,22 @@
     ViewData["Title"] = "List";
     Layout = "~/Views/Shared/_FormsLayout.cshtml";
 }
-
 @section Title
     {
-      <div class="page-breadcrumb">
-            <div class="row align-items-center">
-                <div class="col-6">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 d-flex align-items-center">
-                            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Todo</li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="col-6">
-                </div>
+
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 d-flex align-it.btnems-center">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard"><i class="mdi mdi-home-outline fs-1"></i> </a> <h1 class="mb-0 ms-2">Todo</h1></li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-6">
             </div>
         </div>
+    </div>
 }
 
 
@@ -29,9 +28,11 @@
 
         <div class="card shadow">
             <div class="card-body">
-                <p>
-                    <a asp-action="Create" asp-controller="Todo">Create New</a>
-                </p>
+                <div class="d-flex justify-content-end">
+                    <p>
+                        <a asp-action="Create" asp-controller="Todo" class="btn btn-outline-primary">Add New Task </a>
+                    </p>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -62,7 +63,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                       @item.Status
+                                        @item.Status
                                     </td>
                                     <td>
                                         <div class="d-flex flex-nowrap grap-1 text-nowrap">
@@ -76,9 +77,9 @@
                                     </td>
 
                                     <td>
-                                        <div class="d-flex flex-nowrap gap-1 text-nowrap">
-                                            @Html.ActionLink("Update", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"})
-                                            @Html.ActionLink("Delete", "Delete", new { item.Id }, new{@class="btn btn-danger mdi mdi-delete"} )
+                                        <div class="d-flex flex-nowrap gap-1 text-nowrap justify-content-end gap-1">
+                                            @Html.ActionLink("", "Update", new { item.Id }, new{@class="btn btn-warning mdi mdi-lead-pencil"})
+                                            @Html.ActionLink("", "Delete", new { item.Id }, new{@class="btn btn-danger mdi mdi-delete"} )
                                         </div>
 
                                     </td>

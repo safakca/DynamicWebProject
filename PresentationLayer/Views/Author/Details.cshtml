@@ -8,21 +8,19 @@
 @section Title
     {
 
-<div class="page-breadcrumb">
-    <div class="row align-items-center">
-        <div class="col-6">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0 d-flex align-items-center">
-                    <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Author</li>
-                </ol>
-            </nav> 
-        </div>
-        <div class="col-6">
-             
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 d-flex align-it.btnems-center">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard"><i class="mdi mdi-home-outline fs-1"></i> </a> <h1 class="mb-0 ms-2">Author</h1></li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-6">
+            </div>
         </div>
     </div>
-</div> 
 }
 
 <div class="row">
@@ -31,6 +29,10 @@
         <div class="card shadow">
             <div class="card-body">
                 <dl class="row">
+                    
+                <div class="d-flex justify-content-end mdi mdi-arrow-left-bold">
+                        <a asp-action="List" asp-controller="Author">Back to Author List</a>
+                </div>
 
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.Id)
@@ -70,10 +72,7 @@
                     </dd>
                 </dl>
 
-                <div>
-                    @Html.ActionLink("Update", "Update", new { Model.Id }, new{@class="btn btn-warning"})
-                    <a asp-action="List" asp-controller="Author">Back to Author List</a>
-                </div>
+              
 
             </div>
             @{

@@ -7,13 +7,13 @@
 
 @section Title
     {
+
     <div class="page-breadcrumb">
         <div class="row align-items-center">
             <div class="col-6">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0 d-flex align-items-center">
-                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Todo</li>
+                    <ol class="breadcrumb mb-0 d-flex align-it.btnems-center">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard"><i class="mdi mdi-home-outline fs-1"></i> </a> <h1 class="mb-0 ms-2">Todo</h1></li>
                     </ol>
                 </nav>
             </div>
@@ -56,7 +56,7 @@
                 </dl>
                 <form asp-action="Delete">
                     <input type="hidden" asp-for="Id" />
-                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    <input type="submit" value="Delete" class="btn btn-outline-danger" />
                     <a asp-action="List" asp-controller="Todo">Back to Todo List</a>
                 </form>
 
