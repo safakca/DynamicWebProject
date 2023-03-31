@@ -1,180 +1,107 @@
-﻿@using EntityLayer.Concrete
+﻿@using EntityLayer.Concrete 
+
+@{ 
+    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+}
 
 @{
     List<Article> article = ViewBag.Article;
 }
-@{
-    Layout = null;
-}
-
-
-
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Şafak Akça">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
-    <title>Fakedium</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Display:700,900" rel="stylesheet">
-    <link href="blog.css" rel="stylesheet">
-</head>
-
-<body>
-
-    <div class="container">
-        <header class="blog-header py-3 border-bottom">
-            <div class="row flex-nowrap justify-content-between align-items-center">
-                <div class="col-6 text-left">
-                    <a class="blog-header-logo" asp-controller="Fakedium" asp-action="Index"><img src="~/flexy-bootstrap-lite/assets/images/fakedium-logo.png" alt="Fakedium" width="150" height="60" /></a>
-                </div>
-                <div class="col-6 d-flex justify-content-end align-items-center">
-                    <a class="btn btn-sm btn-outline-success" asp-controller="Account" asp-action="Login">Sign up</a>
-                </div>
-            </div>
-        </header>
-
-        @*     <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-start fs-6 text-decoration-none">
-        <a class="p-2 text-muted" href="#">About</a>
-        <a class="p-2 text-muted" href="#">Article</a>
-        <a class="p-2 text-muted" href="#">Author</a>
-        <a class="p-2 text-muted" href="#">Contact</a>
-        </nav>
-        </div>*@
-
-        <div class="p-3 p-md-5 mb-4 text-white rounded" style="background-image:url('../flexy-bootstrap-lite/assets/images/fakedium-banner.jpg'); background-size:cover; background-position: top center;">
-            <div class="col-md-6 px-0">
-                <h1 class="display-4 font-italic">Welcome to Fakedium</h1>
-                <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.</p>
-                <p class="lead mb-0"></p>
-            </div>
-        </div>
-
-        <div class="row mb-2">
-            @if (article != null)
-            {
-                foreach (var item in article)
-                {
-                    <div class="col-md-4">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start">
-                                <h4 class="mb-0">
-                                    <a class="text-dark text-decoration-none" href="#" style="Overflow:hidden;
+ 
+<div class="row mb-2">
+    @if (article != null)
+    {
+        foreach (var item in article)
+        {
+            <div class="col-md-4">
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <div class="card-body d-flex flex-column align-items-start">
+                        <h4 class="mb-0">
+                            <a class="text-dark text-decoration-none" href="#" style="Overflow:hidden;
                                       max-height: 4rem;
                                       line-height: 2rem;
                                       -webkit-box-orient: vertical;
                                       -webkit-line-clamp: 2;
                                       text-overflow: ellipsis;
                                       display: block;">@item.Title</a>
-                                </h4>
-                                <div class="mb-1 text-muted">@item.CreatedDate</div>
-                                <div class="card-text mb-auto" style="Overflow:hidden;
+                        </h4>
+                        <div class="mb-1 text-muted">@item.CreatedDate</div>
+                        <div class="card-text mb-auto" style="Overflow:hidden;
                                       max-height: 6rem;
                                       line-height: 1.5rem;
                                       -webkit-box-orient: vertical;
                                       -webkit-line-clamp: 5;
                                       text-overflow: ellipsis;
                                       display: block;">
-                                    @item.Description
-                                </div>
-
-                                @Html.ActionLink("Continue reading", "Details", new { @item.Id }, new{@class="text-dark"}) 
-                               
-                            </div>
-                            <img class="card-img-right flex-auto d-none d-md-block" src="~/flexy-bootstrap-lite/assets/images/book-1.jpg" alt="Fakedium" style="width:200px; height:200px;">
+                            @item.Description
                         </div>
+
+                        @Html.ActionLink("Continue reading", "Details", new { @item.Id }, new{@class="text-dark"})
+
                     </div>
-                }
-            }
-        </div>
-    </div>
+                    <img class="card-img-right flex-auto d-none d-md-block" src="~/flexy-bootstrap-lite/assets/images/book-1.jpg" alt="Fakedium" style="width:200px; height:200px;">
+                </div>
+            </div>
+        }
+    }
+</div>
+   
 
-    <main role="main" class="container">
-        <div class="row">
-            <div class="col-md-8 blog-main">
-                <h3 class="pb-3 mb-4 font-italic border-bottom">
-                    UpSchool Story..
-                </h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <h3 class="pb-3 mb-4 font-italic border-bottom">
+                UpSchool Story..
+            </h3>
 
-                <div class="blog-post">
-                    <h5 class="blog-post-title"> What is UpSchool?</h5>
-                    <p class="blog-post-meta">@DateTime.Now
+            <div class="blog-post">
+                <h5 class="blog-post-title"> What is UpSchool?</h5>
+                <p class="blog-post-meta">@DateTime.Now
 
-                    <p> 
-                        It is a very strong and caring team that works hard to reduce the inequality between men and women in the sector. <br />
-                        If your path crosses with upSchool, you are one of the lucky people.
-                        You are a member of a very involved team.<br />
-                         What will you gain?
-                    </p> 
+                <p>
+                    It is a very strong and caring team that works hard to reduce the inequality between men and women in the sector. <br />
+                    If your path crosses with upSchool, you are one of the lucky people.
+                    You are a member of a very involved team.<br />
+                    What will you gain?
+                </p>
 
-                    <ul>
-                        <li>Soul of sisterhood</li>
-                        <li>Better than feedforward feedback</li>
-                        <li>Endless polls :)</li>
-                        <li>Weekly meetings (I think it was the best)</li>
-                        <li>Demo job interview with companies</li>
-                        <li>New job opportunity</li>
-                        <li>Different perspective</li>
-                    </ul>
-                  
-                </div><!-- /.blog-post -->
+                <ul>
+                    <li>Soul of sisterhood</li>
+                    <li>Better than feedforward feedback</li>
+                    <li>Endless polls :)</li>
+                    <li>Weekly meetings (I think it was the best)</li>
+                    <li>Demo job interview with companies</li>
+                    <li>New job opportunity</li>
+                    <li>Different perspective</li>
+                </ul>
+
+            </div><!-- /.blog-post -->
+
+
+        </div><!-- /.blog-main -->
+
+        <aside class="col-md-4 blog-sidebar">
+            <div class="p-3 mb-3 bg-light rounded">
+                <h4 class="font-italic">About Me</h4>
+                <p class="mb-0">
+                    I am Şafak, <em>I was born 1993 in Beyoğlu</em> <br />
+                    I graduated from computer engineering in 2019 and have been working as a data analyst more than 2 and more than 1 years and as a backend developer. <br />
+                    I graduated from computer engineering in 2019 and have been working as a data analyst more than 2 and more than 1 years and as a backend developer.
+                </p> <br />
+                <em> Hope to like it...</em>
+            </div>
+
+            <div class="p-3">
+                <h4 class="font-italic">Elsewhere</h4>
+                <ol class="list-unstyled">
+                    <li><a href="https://github.com/safakca">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/safakakca/">LinkedIn</a></li>
+                    <li><a href="https://medium.com/safakkca">Medium</a></li>
+                </ol>
+            </div>
+        </aside><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+</div><!-- /.container -->
  
-
-            </div><!-- /.blog-main -->
-
-            <aside class="col-md-4 blog-sidebar">
-                <div class="p-3 mb-3 bg-light rounded">
-                    <h4 class="font-italic">About Me</h4>
-                    <p class="mb-0">
-                        I am Şafak, <em>I was born 1993 in Beyoğlu</em> <br />
-                        I graduated from computer engineering in 2019 and have been working as a data analyst more than 2 and more than 1 years and as a backend developer. <br />
-                        I graduated from computer engineering in 2019 and have been working as a data analyst more than 2 and more than 1 years and as a backend developer.
-                    </p> <br />
-                    <em> Hope to like it...</em>
-                </div>
-
-                <div class="p-3">
-                    <h4 class="font-italic">Elsewhere</h4>
-                    <ol class="list-unstyled">
-                        <li><a href="https://github.com/safakca">GitHub</a></li>
-                        <li><a href="https://www.linkedin.com/in/safakakca/">LinkedIn</a></li>
-                        <li><a href="https://medium.com/safakkca">Medium</a></li>
-                    </ol>
-                </div>
-            </aside><!-- /.blog-sidebar -->
-
-        </div><!-- /.row -->
-
-    </main><!-- /.container -->
-
-    <footer class="blog-footer">
-        <div class="container text-center mt-5 border-top py-3">
-            &copy; 2023 - Fakedium - <a asp-area="" asp-controller="Fakedium" asp-action="Index">Home</a>
-        </div>
-    </footer>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <script>
-        Holder.addTheme('thumb', {
-            bg: '#55595c',
-            fg: '#eceeef',
-            text: 'Thumbnail'
-        });
-    </script>
-</body>
-</html>

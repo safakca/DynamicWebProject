@@ -12,22 +12,20 @@ namespace PresentationLayer.Controllers;
 public class DashboardController : Controller
 {
     private readonly IRepository<Article> _articleRepository;
-    private readonly IRepository<Todo> _todoRepository;
+    private readonly IRepository<Author> _authorRepository;
 
-    public DashboardController(IRepository<Article> articleRepository, IRepository<Todo> todoRepository)
+    public DashboardController(IRepository<Article> articleRepository, IRepository<Author> authorRepository)
     {
         _articleRepository = articleRepository;
-        _todoRepository = todoRepository;
+        _authorRepository = authorRepository;
     }
 
     public async Task<IActionResult> Index()
     {
-        List<Article> articleList = await _articleRepository.GetAllAsync();
+        List<Article> articleList = await _articleRepository.GetAllAsync(); 
         ViewBag.Article = articleList;
 
-        List<Todo> todos= await _todoRepository.GetAllAsync();
-        ViewBag.Todos = todos;
- 
+
         var client = new HttpClient();
         var request = new HttpRequestMessage
         {
@@ -42,17 +40,15 @@ public class DashboardController : Controller
         using (var response = await client.SendAsync(request))
         {
             response.EnsureSuccessStatusCode();
-            if(response.IsSuccessStatusCode == true)
+            if (response.IsSuccessStatusCode == true)
             {
                 string body = await response.Content.ReadAsStringAsync();
                 // should be use deserialize to get
                 // should be use serialize to update and create 
                 WeatherViewModel weathers = JsonConvert.DeserializeObject<WeatherViewModel>(body);
                 ViewBag.Weather = weathers;
-            } 
+            }
         } 
-
-
 
         return View();
     } 
